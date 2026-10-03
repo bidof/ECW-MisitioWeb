@@ -1,7 +1,17 @@
 /* =============================================
    PAGINA SOBRE MI: DATOS
    ============================================= */
-main > section[aria-label='Mis datos'] {
+main {
+  max-width: 850px;
+  padding: clamp(4rem, 9vw, 6rem) 0;
+}
+
+body > header > nav > a:nth-child(2) {
+  color: var(--color-acento);
+  background-color: var(--color-fondo);
+}
+
+main > header + section + section {
   max-width: var(--ancho-lectura);
   margin-top: var(--espacio-seccion);
   padding-top: var(--espacio-grande);
@@ -36,7 +46,7 @@ main > section[aria-label='Mis datos'] {
 }
 
 /* La biografia combina texto y una fotografia en dos columnas. */
-main > section[aria-label='Mi forma de mirar'] {
+main > header + section {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.8fr);
   gap: var(--espacio-medio) 3rem;
@@ -73,14 +83,14 @@ main > section[aria-label='Mi forma de mirar'] {
 /* =============================================
    PAGINA SOBRE MI: INTERESES
    ============================================= */
-main > section[aria-label='Otros intereses'] {
+main > header + section + section + section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--espacio-medio);
   margin-top: 4rem;
 }
 
-main > section[aria-label='Otros intereses'] > article {
+main > header + section + section + section > article {
   padding: var(--espacio-grande);
   background-color: var(--color-arena);
 
@@ -131,17 +141,17 @@ main > section[aria-label='Otros intereses'] > article {
 
 /* Los bloques se apilan cuando ya no caben dos columnas. */
 @media (max-width: 700px) {
-  main > section[aria-label='Mis datos'] dl,
-  main > section[aria-label='Otros intereses'] > article dl {
+  main > header + section + section dl,
+  main > header + section + section + section > article dl {
     grid-template-columns: 1fr;
     gap: 0.2rem;
   }
 
-  main > section[aria-label='Otros intereses'] {
+  main > header + section + section + section {
     grid-template-columns: 1fr;
   }
 
-  main > section[aria-label='Mi forma de mirar'] {
+  main > header + section {
     display: block;
 
     & picture {

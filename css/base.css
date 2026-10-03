@@ -132,8 +132,7 @@ nav a {
   text-decoration: none;
 }
 
-nav a:hover,
-nav a[aria-current='page'] {
+nav a:hover {
   color: var(--color-acento);
   background-color: var(--color-fondo);
 }
@@ -181,39 +180,28 @@ body > a:first-child:focus {
 }
 
 /* =============================================
-   ESTRUCTURA DE LAS PAGINAS INTERIORES
+   ENCABEZADOS DE PAGINAS INTERIORES
    ============================================= */
-main:has(> header) {
-  max-width: 850px;
-  padding: clamp(4rem, 9vw, 6rem) 0;
+main > header {
+  margin-bottom: 2.5rem;
+}
 
-  & > header {
-    margin-bottom: 2.5rem;
+main > header > p:first-child {
+  color: var(--color-acento);
+  background-color: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
 
-    & > p:first-child {
-      color: var(--color-acento);
-      background-color: inherit;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
+main > header > h1 {
+  font-size: clamp(3rem, 7vw, 4rem);
+}
 
-    & h1 {
-      font-size: clamp(3rem, 7vw, 4rem);
-    }
-  }
-
-  & > section:first-of-type {
-    max-width: var(--ancho-lectura);
-    font-size: 1.1rem;
-  }
-
-  & > section:first-of-type a {
-    color: var(--color-verde);
-    background-color: inherit;
-    text-underline-offset: 0.2em;
-  }
+main > header > h1 + p {
+  max-width: var(--ancho-lectura);
+  font-size: 1.1rem;
 }
 
 /* =============================================

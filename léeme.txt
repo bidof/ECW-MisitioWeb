@@ -1,0 +1,17 @@
+SITIO WEB PERSONAL
+==================
+
+TECNOLOGIAS
+-----------
+HTML5
+
+CSS
+
+No se emplea ningun tipo de computación ni de framework
+
+CONTENIDO
+---------
+
+El sitio consta de cinco paginas: inicio, sobre mi, viajes, musica y formacion.
+Incluye datos personales y una fotografia personal en sobre-mi.html, contenidos
+de viajes y un video en japon.html, y reproductores de audio en musica.html.
