@@ -88,17 +88,15 @@ main > header + section + section + section h2 {
   font-size: 2.3rem;
 }
 
-main > header + section + section + section ul {
+main > header + section + section + section dl {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0 2rem;
-  padding: 0;
   margin: 0;
   border-top: 1px solid var(--color-linea);
-  list-style: none;
 }
 
-main > header + section + section + section li {
+main > header + section + section + section dl > div {
   display: grid;
   grid-template-columns: 9rem 1fr;
   gap: 0.8rem;
@@ -106,14 +104,17 @@ main > header + section + section + section li {
   border-bottom: 1px solid var(--color-linea);
 }
 
-main > header + section + section + section strong {
+main > header + section + section + section dt {
   color: var(--color-verde);
   background-color: inherit;
+  font-weight: 700;
 }
 
-main > header + section + section + section small {
+main > header + section + section + section dd {
+  margin: 0;
   color: var(--color-texto-suave);
   background-color: inherit;
+  font-size: 0.875rem;
 }
 
 /* Las listas pasan a una columna en pantallas pequenas. */
@@ -128,7 +129,7 @@ main > header + section + section + section small {
   }
 
   main > header + section + section,
-  main > header + section + section + section ul {
+  main > header + section + section + section dl {
     grid-template-columns: 1fr;
   }
 }

@@ -21,57 +21,47 @@ main > header + section a {
   background-color: inherit;
   text-underline-offset: 0.2em;
 }
-
-main > section > ol {
-  padding: 0;
-  border-top: 1px solid var(--color-linea);
-  list-style: none;
-}
-
-main > section > ol li {
+main > section > article {
   display: grid;
-  grid-template-columns: 3rem minmax(0, 1fr) minmax(14rem, 0.8fr);
-  gap: var(--espacio-medio);
+  grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.8fr);
+  gap: 0.25rem var(--espacio-medio);
   padding: 1.1rem 0;
   border-bottom: 1px solid var(--color-linea);
 }
 
-main > section > ol li > strong {
-  grid-column: 1;
-  grid-row: 1 / span 2;
-  color: var(--color-acento);
-  background-color: inherit;
-  font-size: 0.85rem;
+main > section > article:first-of-type {
+  border-top: 1px solid var(--color-linea);
 }
 
-main > section > ol li > p:first-of-type {
-  grid-column: 2;
+main > section > article > h3 {
+  grid-column: 1;
   grid-row: 1;
   margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.4;
 }
 
-main > section > ol li > p + p {
-  grid-column: 2;
+main > section > article > p {
+  grid-column: 1;
   grid-row: 2;
   margin: 0;
-  margin-top: 0.25rem;
   color: var(--color-texto-suave);
   background-color: inherit;
 }
 
-main > section > ol li > audio {
-  grid-column: 3;
+main > section > article > audio {
+  grid-column: 2;
   grid-row: 1 / span 2;
   width: 100%;
 }
 
 @media (max-width: 700px) {
-  main > section > ol li {
-    grid-template-columns: 2rem 1fr;
+  main > section > article {
+    grid-template-columns: 1fr;
   }
 
-  main > section > ol li > audio {
-    grid-column: 2;
+  main > section > article > audio {
+    grid-column: 1;
     grid-row: 3;
   }
 }
