@@ -1,0 +1,82 @@
+/* =============================================
+   PAGINA PROYECTOS: TARJETAS Y TECNOLOGIAS
+   ============================================= */
+main > section[aria-label='Lista de proyectos'] {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--espacio-medio);
+  margin-top: 4rem;
+}
+
+main > section[aria-label='Lista de proyectos'] > article {
+  padding: var(--espacio-grande);
+  background-color: var(--color-arena);
+
+  & > p:first-child {
+    color: var(--color-acento);
+    background-color: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  & h2 {
+    font-size: 2rem;
+  }
+
+  & > p:not(:first-child) {
+    color: var(--color-texto-suave);
+    background-color: inherit;
+  }
+
+  & ul {
+    padding-left: 1.2rem;
+    color: var(--color-verde);
+    background-color: inherit;
+  }
+}
+
+main > section[aria-label='Tecnologías con las que he trabajado'] {
+  margin-top: 4rem;
+}
+
+main > section[aria-label='Tecnologías con las que he trabajado'] h2 {
+  font-size: 2.3rem;
+}
+
+main > section[aria-label='Tecnologías con las que he trabajado'] ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 2rem;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--color-linea);
+  list-style: none;
+}
+
+main > section[aria-label='Tecnologías con las que he trabajado'] li {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 0.8rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--color-linea);
+}
+
+main > section[aria-label='Tecnologías con las que he trabajado'] strong {
+  color: var(--color-verde);
+  background-color: inherit;
+}
+
+main > section[aria-label='Tecnologías con las que he trabajado'] small {
+  color: var(--color-texto-suave);
+  background-color: inherit;
+}
+
+/* Las listas pasan a una columna en pantallas pequenas. */
+@media (max-width: 700px) {
+  main > section[aria-label='Lista de proyectos'],
+  main > section[aria-label='Tecnologías con las que he trabajado'] ul {
+    grid-template-columns: 1fr;
+  }
+}

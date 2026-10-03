@@ -1,0 +1,83 @@
+/* =============================================
+   PAGINA JAPON: IMAGEN DESTACADA
+   ============================================= */
+main > figure {
+  margin: 2rem 0 3rem;
+}
+
+main > figure img {
+  display: block;
+}
+
+main > figure figcaption {
+  margin-top: 0.65rem;
+  color: var(--color-texto-suave);
+  background-color: inherit;
+  font-size: 0.8rem;
+}
+
+main > section[aria-label='Vídeo de Kyoto'] {
+  margin-top: 4rem;
+
+  & h2 {
+    font-size: 2.3rem;
+  }
+
+  & figure {
+    max-width: 640px;
+    margin: 0;
+  }
+
+  & figcaption {
+    margin-top: 0.65rem;
+    color: var(--color-texto-suave);
+    background-color: inherit;
+    font-size: 0.8rem;
+  }
+
+  & a {
+    color: var(--color-verde);
+    background-color: inherit;
+    text-underline-offset: 0.2em;
+  }
+}
+
+/* La galeria presenta dos lugares con el mismo peso visual. */
+main > section[aria-label='Imágenes de Japón'] {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--espacio-medio);
+  margin-top: 4rem;
+
+  & h2 {
+    grid-column: 1 / -1;
+    font-size: 2.3rem;
+  }
+
+  & figure {
+    margin: 0;
+  }
+
+  & img {
+    display: block;
+  }
+
+  & figcaption {
+    margin-top: 0.65rem;
+    color: var(--color-texto-suave);
+    background-color: inherit;
+    font-size: 0.8rem;
+  }
+
+  & a {
+    color: var(--color-verde);
+    background-color: inherit;
+    text-underline-offset: 0.2em;
+  }
+}
+
+@media (max-width: 700px) {
+  main > section[aria-label='Imágenes de Japón'] {
+    grid-template-columns: 1fr;
+  }
+}
