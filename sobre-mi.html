@@ -6,6 +6,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <meta name="description" content="Conoce un poco más sobre David y sus intereses.">
   <title>Sobre mí | David Alvarez Diaz</title>
   <link rel="stylesheet" href="css/base.css">
@@ -30,12 +31,19 @@
     </header>
     <section aria-label="Mi forma de mirar">
       <h2>Mi forma de mirar</h2>
+      <picture>
+        <source media="(max-width: 391px)" srcset="imagen/img_movil.jpeg" width="270" height="480">
+        <source media="(max-width: 700px)" srcset="imagen/img_tablet.jpeg" width="360" height="640">
+        <source media="(max-width: 1000px)" srcset="imagen/img_portatil.jpeg" width="306" height="544">
+        <source media="(min-width: 1001px)" srcset="imagen/img_escritorio.jpeg" width="396" height="704">
+        <img src="imagen/img_escritorio.jpeg" width="396" height="704" alt="Fotografía personal de David con camisa blanca y corbata verde, frente a un espejo" decoding="async">
+      </picture>
       <p>Soy ingeniero de software y me gusta convertir las ideas en proyectos útiles. Este blog es una colección de intereses: viajes que todavía están en el mapa, discos que siguen sonando y preguntas que me apetece explorar.</p>
       <p>Cuando no estoy trabajando en proyectos web, disfruto de la arquería, descubriendo música de otras épocas y leyendo sobre culturas diferentes.</p>
-      <picture>
-        <source media="(max-width: 700px)" srcset="imagen/img_pequeña.jpeg">
-        <img src="imagen/img_grande.jpeg" alt="Fotografía personal de David" loading="lazy" decoding="async">
-      </picture>
+      <p>Mi camino empezó en el Grado en Ingeniería del Software de la Universidad de Oviedo y hoy sigo aprendiendo en el Máster en Ingeniería Web. Me interesa cómo una página bien construida, rápida, accesible y fácil de mantener, puede marcar la diferencia para quien la usa.</p>
+      <p>He trabajado con tecnologías muy distintas: aplicaciones web, videojuegos con Unity y experiencias de realidad virtual. Me gusta cambiar de ámbito porque cada uno obliga a plantear los problemas de otra manera. En la sección de <a href="proyectos.html">formación</a> puedes ver mis proyectos con más detalle.</p>
+      <p>Fuera de la pantalla busco equilibrio: la arquería y la calistenia me enseñan paciencia y constancia, y los videojuegos en equipo me recuerdan que casi todo se disfruta más cuando se comparte.</p>
+      <p>También me gusta la música de otras épocas, sobre todo el rock clásico, y soñar con viajes como el de Japón, donde quiero ver de cerca el contraste entre tradición y tecnología, además de su cultura del automóvil. Si quieres saber más, escríbeme al correo que aparece en mis datos.</p>
     </section>
     <section aria-label="Mis datos">
       <h2>Mis datos</h2>
@@ -47,13 +55,13 @@
       </dl>
     </section>
     <section aria-label="Otros intereses">
-      <article>
-        <p>04</p>
+      <article id="deporte">
+        <p>Deporte</p>
         <h2>Mi deporte favorito</h2>
         <p>La arquería es mi deporte favorito. Me atraen la concentración, la técnica y la paciencia que exige cada disparo. Es una forma de desconectar, mejorar poco a poco y aprender a cuidar cada detalle. También practico calistenia, que me permite trabajar la fuerza y el control corporal usando mi propio peso.</p>
       </article>
-      <article>
-        <p>05</p>
+      <article id="juegos">
+        <p>Juegos</p>
         <h2>Mis juegos favoritos</h2>
         <dl>
           <dt>Overwatch</dt>

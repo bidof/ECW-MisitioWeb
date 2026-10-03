@@ -45,39 +45,17 @@ main > header + section + section {
   }
 }
 
-/* La biografia combina texto y una fotografia en dos columnas. */
+/* La biografia combina texto y fotografia: la foto flota a la derecha y el texto la
+   rodea, asi la altura se ajusta sola. La imagen conserva siempre su tamano real. */
 main > header + section {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.8fr);
-  gap: var(--espacio-medio) 3rem;
+  display: flow-root;
   max-width: none;
   font-size: 1.1rem;
 
-  & h2 {
-    grid-column: 1 / -1;
-  }
-
-  & p {
-    grid-column: 1;
-  }
-
   & picture {
-    display: block;
-    grid-column: 2;
-    grid-row: 2 / span 2;
-    width: 100%;
-    min-height: 24rem;
-    aspect-ratio: 16 / 9;
-
-    & img {
-      width: 100%;
-      height: 100%;
-      min-height: 24rem;
-      object-fit: cover;
-      object-position: center;
-    }
+    float: right;
+    margin: 0 0 var(--espacio-grande) 3rem;
   }
-
 }
 
 /* =============================================
@@ -151,20 +129,9 @@ main > header + section + section + section > article {
     grid-template-columns: 1fr;
   }
 
-  main > header + section {
-    display: block;
-
-    & picture {
-      width: 100%;
-      min-height: 0;
-      aspect-ratio: 1100 / 2062;
-      margin-top: var(--espacio-grande);
-
-      & img {
-        height: 100%;
-        min-height: 0;
-      }
-    }
+  main > header + section picture {
+    float: none;
+    margin: 0 0 var(--espacio-grande);
   }
 
 }

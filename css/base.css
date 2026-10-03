@@ -114,7 +114,10 @@ body > header > a:first-child {
   background-color: inherit;
 }
 
-img,
+img {
+  display: block;
+}
+
 video {
   display: block;
   max-width: 100%;
