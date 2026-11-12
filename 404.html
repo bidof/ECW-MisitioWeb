@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="La página que buscas no existe en el sitio de David.">
+  <meta name="author" content="David Alvarez Diaz">
+  <title>Página no encontrada | David</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css?v=20261112">
+  <link rel="stylesheet" href="css/utilidades.css?v=20261112">
+  <script src="js/main.js?v=20261112" defer></script>
+</head>
+<body>
+  <a href="#contenido">Saltar al contenido</a>
+  <header>
+    <a href="index.html" title="Ir a la portada">David.</a>
+    <button type="button" aria-expanded="false" aria-controls="menu" hidden><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menú</button>
+    <nav id="menu" aria-label="Navegación principal">
+      <a href="index.html">Inicio</a>
+      <a href="sobre-mi.html">Sobre mí</a>
+      <a href="japon.html">Viajes</a>
+      <a href="musica.html">Música</a>
+      <a href="proyectos.html">Formación</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <div>
+      <form role="search" action="buscar.html" method="get">
+        <label for="buscador">Buscar en el sitio</label>
+        <input type="search" id="buscador" name="q" placeholder="Buscar en el sitio…" autocomplete="off" title="Escribe para ver sugerencias. Atajo de teclado: /">
+        <button type="submit" aria-label="Buscar" title="Buscar"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      </form>
+      <a href="en/index.html" hreflang="en" lang="en" aria-label="English" title="Read this page in English">EN</a>
+      <a href="ayuda.html" aria-label="Ayuda (?)" title="Ayuda, preguntas frecuentes y atajos de teclado">?</a>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <nav aria-label="Migas de pan">
+      <ol>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="404.html" aria-current="page">Página no encontrada</a></li>
+      </ol>
+    </nav>
+    <header>
+      <p>Error 404</p>
+      <h1>Esta página no existe.</h1>
+      <p>Puede que la dirección esté mal escrita o que la página se haya movido. Prueba a buscarla o vuelve a la portada.</p>
+    </header>
+    <form role="search" action="buscar.html" method="get">
+      <label for="buscador-pagina">¿Qué estabas buscando?</label>
+      <input type="search" id="buscador-pagina" name="q" placeholder="Buscar en el sitio…" autocomplete="off">
+      <button type="submit" aria-label="Buscar" title="Buscar"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+    </form>
+    <section aria-labelledby="titulo-destinos">
+      <h2 id="titulo-destinos">Páginas principales</h2>
+      <ul aria-label="Páginas principales">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="sobre-mi.html">Sobre mí</a></li>
+        <li><a href="proyectos.html">Formación</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="mapa.html">Mapa del sitio</a></li>
+        <li><a href="ayuda.html">Ayuda</a></li>
+      </ul>
+      <p id="resumen-busqueda" role="status" aria-live="polite"></p>
+      <ol id="resultados"></ol>
+    </section>
+    <section lang="en" aria-labelledby="titulo-ingles">
+      <h2 id="titulo-ingles">Page not found</h2>
+      <p>The address may be misspelled or the page may have moved. Go to the <a href="en/index.html" hreflang="en">English home page</a> or use the <a href="en/buscar.html" hreflang="en">search</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <h2>David Alvarez Diaz</h2>
+      <p>Ingeniero de software y estudiante del Máster en Ingeniería Web en la Universidad de Oviedo.</p>
+      <p>Última actualización: <time datetime="2026-11-10">10 de noviembre de 2026</time></p>
+      <p>© 2026 · uo283196 · HTML5, CSS y JavaScript</p>
+    </div>
+    <nav aria-label="Enlaces del sitio">
+      <h2>El sitio</h2>
+      <a href="mapa.html">Mapa del sitio</a>
+      <a href="buscar.html">Buscador</a>
+      <a href="ayuda.html">Ayuda</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <div>
+      <h2>Contacto y redes</h2>
+      <address>
+        <a href="mailto:davor2205@gmail.com"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>davor2205@gmail.com</a>
+        <a href="https://github.com/bidof" target="_blank" rel="me noopener noreferrer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17.3 4.3 18.3 4.6 18.3 4.6c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>GitHub (bidof)</a>
+      </address>
+    </div>
+  </footer>
+</body>
+</html>

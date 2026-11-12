@@ -3,34 +3,62 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Conoce a David: biografía, datos de contacto y todas sus aficiones reunidas.">
+  <meta name="author" content="David Alvarez Diaz">
+  <title>Sobre mí | David Alvarez Diaz</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <meta name="description" content="Conoce un poco más sobre David y sus intereses.">
-  <title>Sobre mí | David Alvarez Diaz</title>
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/sobre-mi.css">
+  <link rel="alternate" hreflang="en" href="en/sobre-mi.html">
+  <link rel="stylesheet" href="css/base.css?v=20261112">
+  <link rel="stylesheet" href="css/sobre-mi.css?v=20261112">
+  <script src="js/main.js?v=20261112" defer></script>
 </head>
 <body>
   <a href="#contenido">Saltar al contenido</a>
   <header>
-    <a href="index.html">David.</a>
-    <nav aria-label="Navegación principal">
+    <a href="index.html" title="Ir a la portada">David.</a>
+    <button type="button" aria-expanded="false" aria-controls="menu" hidden><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menú</button>
+    <nav id="menu" aria-label="Navegación principal">
       <a href="index.html">Inicio</a>
       <a href="sobre-mi.html" aria-current="page">Sobre mí</a>
       <a href="japon.html">Viajes</a>
       <a href="musica.html">Música</a>
       <a href="proyectos.html">Formación</a>
+      <a href="contacto.html">Contacto</a>
     </nav>
+    <div>
+      <form role="search" action="buscar.html" method="get">
+        <label for="buscador">Buscar en el sitio</label>
+        <input type="search" id="buscador" name="q" placeholder="Buscar en el sitio…" autocomplete="off" title="Escribe para ver sugerencias. Atajo de teclado: /">
+        <button type="submit" aria-label="Buscar" title="Buscar"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      </form>
+      <a href="en/sobre-mi.html" hreflang="en" lang="en" aria-label="English" title="Read this page in English">EN</a>
+      <a href="ayuda.html" aria-label="Ayuda (?)" title="Ayuda, preguntas frecuentes y atajos de teclado">?</a>
+    </div>
   </header>
+
   <main id="contenido">
+    <nav aria-label="Migas de pan">
+      <ol>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="sobre-mi.html" aria-current="page">Sobre mí</a></li>
+      </ol>
+    </nav>
     <header>
       <p>Una pequeña biografía</p>
       <h1>Hola, soy David.</h1>
+      <p>Ingeniero de software, estudiante del Máster en Ingeniería Web y aficionado a la música, los viajes y el deporte.</p>
+      <ul aria-label="En pocas palabras">
+        <li>Ingeniería del software</li>
+        <li>Desarrollo web</li>
+        <li>Unity y realidad virtual</li>
+        <li>Guitarra</li>
+        <li>Arquería</li>
+      </ul>
     </header>
-    <section aria-label="Mi forma de mirar">
-      <h2>Mi forma de mirar</h2>
+    <figure>
       <picture>
         <source media="(max-width: 391px)" srcset="imagen/img_movil.jpeg" width="270" height="480">
         <source media="(max-width: 700px)" srcset="imagen/img_tablet.jpeg" width="360" height="640">
@@ -38,31 +66,52 @@
         <source media="(min-width: 1001px)" srcset="imagen/img_escritorio.jpeg" width="396" height="704">
         <img src="imagen/img_escritorio.jpeg" width="396" height="704" alt="Fotografía personal de David con camisa blanca y corbata verde, frente a un espejo" decoding="async">
       </picture>
+    </figure>
+    <section id="biografia" aria-labelledby="titulo-biografia">
+      <h2 id="titulo-biografia">Mi forma de mirar</h2>
       <p>Soy ingeniero de software y me gusta convertir las ideas en proyectos útiles. Este blog es una colección de intereses: viajes que todavía están en el mapa, discos que siguen sonando y preguntas que me apetece explorar.</p>
       <p>Mi camino empezó en el Grado en Ingeniería del Software de la Universidad de Oviedo y hoy sigo aprendiendo en el Máster en Ingeniería Web. Me interesa cómo una página bien construida, rápida, accesible y fácil de mantener, puede marcar la diferencia para quien la usa.</p>
       <p>He trabajado con tecnologías muy distintas: aplicaciones web, videojuegos con Unity y experiencias de realidad virtual. Me gusta cambiar de ámbito porque cada uno obliga a plantear los problemas de otra manera. En la sección de <a href="proyectos.html">formación</a> puedes ver mis proyectos con más detalle.</p>
-      <p>La música es una de mis grandes pasiones. Me gusta sobre todo la de otras épocas, como el rock clásico, el blues o el soul, y además de escucharla toco la guitarra. Tocar me ayuda a desconectar y a entender mejor la música que escucho.</p>
-      <p>Cuando me alejo del ordenador practico arquería y calistenia, que me enseñan concentración y constancia, y quedo con amigos para jugar en equipo, porque casi todo se disfruta más cuando se comparte.</p>
-      <p>Y siempre hay un viaje pendiente en la lista: Japón, para ver de cerca el contraste entre tradición y tecnología, y también su cultura del automóvil. Si quieres saber más, escríbeme al correo que aparece en mis datos.</p>
+      <p>Fuera del trabajo tengo varias aficiones que me acompañan desde hace años; más abajo las tienes <a href="#aficiones">todas reunidas</a>. Si quieres saber más, puedes <a href="contacto.html">escribirme desde la página de contacto</a>.</p>
     </section>
-    <section aria-label="Mis datos">
-      <h2>Mis datos</h2>
+    <section id="datos" aria-labelledby="titulo-datos">
+      <h2 id="titulo-datos">Mis datos</h2>
       <dl>
         <dt>Nombre y apellidos</dt>
         <dd>David Alvarez Diaz</dd>
+        <dt>Formación actual</dt>
+        <dd>Máster en Ingeniería Web · Universidad de Oviedo</dd>
         <dt>Correo electrónico</dt>
         <dd><a href="mailto:davor2205@gmail.com">davor2205@gmail.com</a></dd>
+        <dt>GitHub</dt>
+        <dd><a href="https://github.com/bidof" target="_blank" rel="me noopener noreferrer">github.com/bidof</a></dd>
+        <dt>Más formas de contacto</dt>
+        <dd><a href="contacto.html">Página de contacto y formulario</a></dd>
       </dl>
     </section>
-    <section aria-label="Otros intereses">
+    <section id="aficiones" aria-labelledby="titulo-aficiones">
+      <h2 id="titulo-aficiones">Mis aficiones</h2>
+      <p>Todo lo que hago cuando me alejo del ordenador, reunido en un solo lugar.</p>
+      <article id="musica-guitarra">
+        <p>Música</p>
+        <h3>Rock clásico y guitarra</h3>
+        <p>La música es una de mis grandes pasiones. Me gusta sobre todo la de otras épocas, como el rock clásico, el blues o el soul, y además de escucharla toco la guitarra. Tocar me ayuda a desconectar y a entender mejor la música que escucho.</p>
+        <a href="musica.html">Escuchar mi selección →</a>
+      </article>
+      <article id="viajes">
+        <p>Viajes</p>
+        <h3>Japón y la cultura del motor</h3>
+        <p>Siempre hay un viaje pendiente en la lista: Japón, para ver de cerca el contraste entre tradición y tecnología, y también su cultura del automóvil.</p>
+        <a href="japon.html">Ver el destino →</a>
+      </article>
       <article id="deporte">
         <p>Deporte</p>
-        <h2>Mi deporte favorito</h2>
+        <h3>Arquería y calistenia</h3>
         <p>La arquería es mi deporte favorito. Me atraen la concentración, la técnica y la paciencia que exige cada disparo. Es una forma de desconectar, mejorar poco a poco y aprender a cuidar cada detalle. También practico calistenia, que me permite trabajar la fuerza y el control corporal usando mi propio peso.</p>
       </article>
       <article id="juegos">
         <p>Juegos</p>
-        <h2>Mis juegos favoritos</h2>
+        <h3>Mis juegos favoritos</h3>
         <dl>
           <dt>Overwatch</dt>
           <dd>Partidas llenas de acción, roles distintos y trabajo en equipo.</dd>
@@ -75,9 +124,28 @@
       </article>
     </section>
   </main>
+
   <footer>
-    <p>© 2026 David Alvarez Diaz · uo283196 · HTML5 y CSS.</p>
-    <address><a href="mailto:davor2205@gmail.com">davor2205@gmail.com</a></address>
+    <div>
+      <h2>David Alvarez Diaz</h2>
+      <p>Ingeniero de software y estudiante del Máster en Ingeniería Web en la Universidad de Oviedo.</p>
+      <p>Última actualización: <time datetime="2026-11-10">10 de noviembre de 2026</time></p>
+      <p>© 2026 · uo283196 · HTML5, CSS y JavaScript</p>
+    </div>
+    <nav aria-label="Enlaces del sitio">
+      <h2>El sitio</h2>
+      <a href="mapa.html">Mapa del sitio</a>
+      <a href="buscar.html">Buscador</a>
+      <a href="ayuda.html">Ayuda</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <div>
+      <h2>Contacto y redes</h2>
+      <address>
+        <a href="mailto:davor2205@gmail.com"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>davor2205@gmail.com</a>
+        <a href="https://github.com/bidof" target="_blank" rel="me noopener noreferrer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17.3 4.3 18.3 4.6 18.3 4.6c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>GitHub (bidof)</a>
+      </address>
+    </div>
   </footer>
 </body>
 </html>
