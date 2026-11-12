@@ -1,67 +1,154 @@
 /* =============================================
-   PAGINA MUSICA: LISTA DE ALBUMES
+   PAGINA MUSICA: INTRODUCCION
    ============================================= */
 main {
   max-width: 850px;
-  padding: clamp(4rem, 9vw, 6rem) 0;
-}
-
-body > header > nav > a:nth-child(4) {
-  color: var(--color-acento);
-  background-color: var(--color-fondo);
+  padding: clamp(1.5rem, 4vw, 2.5rem) 0 clamp(4rem, 9vw, 6rem);
 }
 
 main > header + section {
-  max-width: var(--ancho-lectura);
-  font-size: 1.1rem;
-}
-
-main > header + section a {
-  color: var(--color-verde);
-  background-color: inherit;
-  text-underline-offset: 0.2em;
-}
-main > section > article {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.8fr);
-  gap: 0.25rem var(--espacio-medio);
-  padding: 1.1rem 0;
-  border-bottom: 1px solid var(--color-linea);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--espacio-medio);
+
+  & > h2,
+  & > p {
+    grid-column: 1 / -1;
+    max-width: var(--ancho-lectura);
+  }
+
+  & > p {
+    font-size: 1.1rem;
+  }
+
+  & > p:last-of-type {
+    margin-bottom: var(--espacio-grande);
+  }
 }
 
-main > section > article:first-of-type {
-  border-top: 1px solid var(--color-linea);
+/* =============================================
+   PAGINA MUSICA: TARJETAS DE DISCOS
+   ============================================= */
+main > header + section > article {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  grid-template-areas:
+    "disco artista"
+    "disco titulo"
+    "texto texto"
+    "cancion cancion"
+    "audio audio";
+  column-gap: var(--espacio-medio);
+  align-content: start;
+  padding: var(--espacio-grande);
+  border: 1px solid transparent;
+  border-radius: var(--radio);
+  background-color: var(--color-arena);
+  transition: transform var(--transicion), box-shadow var(--transicion), border-color var(--transicion);
+
+  /* Disco de vinilo dibujado solo con CSS. */
+  &::before {
+    grid-area: disco;
+    align-self: center;
+    width: 4.5rem;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle, var(--color-fondo) 0 6%, var(--color-acento) 7% 30%, transparent 31%),
+      conic-gradient(transparent 0 15%, rgb(255 255 255 / 0.22) 22%, transparent 30% 65%, rgb(255 255 255 / 0.22) 72%, transparent 80%),
+      repeating-radial-gradient(circle, #1c2222 0 2px, #2c3333 3px 4px);
+    box-shadow: var(--sombra);
+    content: "";
+  }
+
+  & > p:first-child {
+    grid-area: artista;
+    align-self: end;
+    margin: 0;
+    color: var(--color-acento);
+    background-color: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  & > h3 {
+    grid-area: titulo;
+    margin: 0.2rem 0 0;
+    font-size: 1.3rem;
+    line-height: 1.25;
+  }
+
+  & > h3 > a {
+    color: inherit;
+    background-color: inherit;
+    text-decoration: none;
+  }
+
+  & > h3 > a:hover {
+    color: var(--color-acento);
+    text-decoration: underline;
+  }
+
+  & > p:nth-of-type(2) {
+    grid-area: texto;
+    margin: var(--espacio-medio) 0 var(--espacio-pequeno);
+    color: var(--color-texto-suave);
+    background-color: inherit;
+  }
+
+  & > p:nth-of-type(3) {
+    grid-area: cancion;
+    margin: 0 0 var(--espacio-pequeno);
+    color: var(--color-verde);
+    background-color: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  & > audio {
+    grid-area: audio;
+    width: 100%;
+  }
 }
 
-main > section > article > h3 {
-  grid-column: 1;
-  grid-row: 1;
-  margin: 0;
-  font-size: 1.1rem;
-  line-height: 1.4;
+main > header + section > article:nth-of-type(4n + 2),
+main > header + section > article:nth-of-type(4n + 3) {
+  background-color: var(--color-menta);
 }
 
-main > section > article > p {
-  grid-column: 1;
-  grid-row: 2;
-  margin: 0;
-  color: var(--color-texto-suave);
-  background-color: inherit;
+main > header + section > article:hover {
+  box-shadow: var(--sombra);
+  transform: translateY(-3px);
 }
 
-main > section > article > audio {
-  grid-column: 2;
-  grid-row: 1 / span 2;
-  width: 100%;
+/* JavaScript marca la cancion activa: el disco gira y la tarjeta se resalta. */
+main > header + section > article[data-sonando="true"] {
+  border-color: var(--color-verde);
+  box-shadow: 0 0 0 2px var(--color-verde), var(--sombra);
+}
+
+main > header + section > article[data-sonando="true"]::before {
+  animation: girar 2.4s linear infinite;
+}
+
+main > header + section > article[data-sonando="true"] > p:nth-of-type(3)::before {
+  content: "♪ ";
+}
+
+@keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 700px) {
-  main > section > article {
+  main > header + section {
     grid-template-columns: 1fr;
-  }
-
-  main > section > article > audio {
-    grid-column: 1;
-    grid-row: 3;
   }
 }

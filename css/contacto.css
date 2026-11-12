@@ -1,0 +1,245 @@
+/* =============================================
+   PAGINA CONTACTO: CANALES
+   ============================================= */
+main {
+  max-width: 850px;
+  padding: clamp(1.5rem, 4vw, 2.5rem) 0 clamp(4rem, 9vw, 6rem);
+}
+
+main > section {
+  margin-top: var(--espacio-seccion);
+
+  & > h2 {
+    font-size: 2.3rem;
+  }
+
+  & > p {
+    max-width: var(--ancho-lectura);
+    color: var(--color-texto-suave);
+    background-color: inherit;
+  }
+}
+
+main > header + section > ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--espacio-medio);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+main > header + section > ul > li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+  padding: var(--espacio-grande);
+  border: 1px solid var(--color-linea);
+  border-radius: var(--radio);
+  background-color: var(--color-arena);
+  transition: transform var(--transicion), box-shadow var(--transicion);
+
+  & > svg {
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-bottom: 0.4rem;
+    color: var(--color-acento);
+    background-color: inherit;
+  }
+
+  & > strong {
+    font-size: 1.1rem;
+  }
+
+  & > span {
+    color: var(--color-texto-suave);
+    background-color: inherit;
+    font-size: 0.9rem;
+  }
+
+  & > a {
+    color: var(--color-verde);
+    background-color: inherit;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+
+  & > button {
+    margin-top: auto;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.85rem;
+  }
+}
+
+main > header + section > ul > li:hover {
+  box-shadow: var(--sombra);
+  transform: translateY(-3px);
+}
+
+main > header + section > ul > li:nth-child(2) {
+  background-color: var(--color-menta);
+}
+
+/* =============================================
+   PAGINA CONTACTO: FORMULARIO
+   ============================================= */
+main form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--espacio-medio) var(--espacio-grande);
+  max-width: var(--ancho-lectura);
+  padding: clamp(1.25rem, 4vw, 2rem);
+  border: 1px solid var(--color-linea);
+  border-radius: var(--radio);
+  background-color: var(--color-superficie);
+  box-shadow: var(--sombra);
+
+  & > p {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin: 0;
+  }
+
+  /* Nota inicial, asunto, mensaje, estado y boton ocupan toda la fila. */
+  & > p:first-child,
+  & > p:nth-child(4),
+  & > p:nth-child(5),
+  & > p:last-child,
+  & > [role="status"] {
+    grid-column: 1 / -1;
+  }
+
+  & > p:first-child {
+    color: var(--color-texto-suave);
+    background-color: inherit;
+    font-size: 0.9rem;
+  }
+
+  & label {
+    font-weight: 700;
+  }
+
+  & abbr {
+    color: var(--color-error);
+    background-color: inherit;
+    text-decoration: none;
+  }
+
+  & input,
+  & select,
+  & textarea {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid var(--color-linea);
+    border-radius: 0.5rem;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font: inherit;
+    transition: border-color var(--transicion), box-shadow var(--transicion);
+  }
+
+  & textarea {
+    min-height: 9rem;
+    resize: vertical;
+  }
+
+  & input:focus,
+  & select:focus,
+  & textarea:focus {
+    border-color: var(--color-verde);
+    box-shadow: 0 0 0 4px var(--color-menta);
+    outline: none;
+  }
+
+  /* Estados de validacion: borde de color y mensaje bajo el campo. */
+  & [aria-invalid="true"] {
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 1px var(--color-error);
+  }
+
+  & [aria-invalid="true"]:focus {
+    border-color: var(--color-error);
+  }
+
+  & [aria-invalid="false"] {
+    border-color: var(--color-exito);
+  }
+
+  & p > span {
+    color: var(--color-texto-suave);
+    background-color: inherit;
+    font-size: 0.85rem;
+  }
+
+  & p > span:last-child {
+    color: var(--color-error);
+    font-weight: 500;
+  }
+
+  & p > span:last-child:not(:empty)::before {
+    content: "⚠ ";
+  }
+
+  & [role="status"] {
+    margin: 0;
+    border-radius: 0.5rem;
+    font-weight: 500;
+  }
+
+  & [role="status"]:not(:empty) {
+    padding: 0.8rem 1rem;
+    border-left: 4px solid var(--color-exito);
+    background-color: var(--color-menta);
+    color: var(--color-texto);
+  }
+
+  & [role="status"][data-tipo="error"]:not(:empty) {
+    border-left-color: var(--color-error);
+    background-color: var(--color-arena);
+  }
+}
+
+/* =============================================
+   PAGINA CONTACTO: REFERENCIAS
+   ============================================= */
+main > section:last-child {
+  padding: clamp(1.25rem, 4vw, 2rem);
+  border-left: 4px solid var(--color-acento);
+  border-radius: 0 var(--radio) var(--radio) 0;
+  background-color: var(--color-arena);
+
+  & > h2 {
+    font-size: 2rem;
+  }
+
+  /* Enlace con aspecto de boton para pedir referencias. */
+  & > p > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.2rem;
+    border: 2px solid var(--color-verde);
+    border-radius: 999px;
+    background-color: var(--color-verde);
+    color: var(--color-boton-texto);
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color var(--transicion), border-color var(--transicion), transform var(--transicion);
+  }
+
+  & > p > a:hover {
+    border-color: transparent;
+    background-color: var(--color-acento);
+    color: var(--color-boton-texto);
+    transform: translateY(-2px);
+  }
+}
+
+@media (max-width: 700px) {
+  main > header + section > ul,
+  main form {
+    grid-template-columns: 1fr;
+  }
+}

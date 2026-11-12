@@ -10,7 +10,13 @@
   --color-menta: #d9eee8;
   --color-arena: #f7f2e9;
   --color-fondo: #fffdf8;
+  --color-superficie: #ffffff;
   --color-linea: #d9d5ca;
+  --color-boton-texto: #ffffff;
+  --color-error: #9e1c14;
+  --color-exito: #1b5e34;
+  --sombra: 0 14px 34px -18px rgb(24 33 33 / 0.45);
+  --radio: 0.75rem;
   /* El contenido crece hasta este limite para no crear lineas demasiado largas. */
   --ancho-contenido: 1080px;
   /* El texto de lectura usa un limite menor para que resulte comodo leerlo. */
@@ -19,6 +25,8 @@
   --espacio-medio: 1rem;
   --espacio-grande: 1.5rem;
   --espacio-seccion: 3rem;
+  --transicion: 0.2s ease;
+  color-scheme: light;
 }
 
 /* =============================================
@@ -38,11 +46,13 @@ body {
   color: var(--color-texto);
   font-family: 'Roboto', Arial, sans-serif;
   line-height: 1.6;
+  transition: background-color var(--transicion), color var(--transicion);
 }
 
 a {
   color: inherit;
   background-color: inherit;
+  text-underline-offset: 0.2em;
 }
 
 /* El foco visible permite usar la web con teclado. */
@@ -51,11 +61,17 @@ a {
   outline-offset: 4px;
 }
 
+/* Los destinos de las anclas no quedan pegados al borde superior. */
+[id] {
+  scroll-margin-top: var(--espacio-grande);
+}
+
 h1,
 h2,
 h3 {
   margin: 0 0 var(--espacio-medio);
   line-height: 1.1;
+  text-wrap: balance;
 }
 
 h1 {
@@ -73,6 +89,42 @@ h3 {
 
 p {
   margin: 0 0 var(--espacio-medio);
+}
+
+kbd {
+  display: inline-block;
+  min-width: 1.6em;
+  padding: 0.05rem 0.4rem;
+  border: 1px solid var(--color-linea);
+  border-bottom-width: 3px;
+  border-radius: 0.35rem;
+  background-color: var(--color-superficie);
+  color: var(--color-texto);
+  font-family: inherit;
+  font-size: 0.85em;
+  text-align: center;
+}
+
+mark {
+  padding: 0 0.15em;
+  border-radius: 0.2em;
+  background-color: var(--color-menta);
+  color: var(--color-verde);
+  font-weight: 700;
+}
+
+img {
+  display: block;
+}
+
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+svg {
+  flex-shrink: 0;
 }
 
 /* =============================================
@@ -94,92 +146,446 @@ main {
   container-type: inline-size;
 }
 
+/* =============================================
+   CABECERA: LOGO, MENU, BUSCADOR Y HERRAMIENTAS
+   ============================================= */
 body > header {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--espacio-grande);
+  gap: var(--espacio-medio) var(--espacio-grande);
   padding: var(--espacio-grande) 0;
   border-bottom: 1px solid var(--color-linea);
 }
 
 body > header > a:first-child {
+  color: var(--color-acento);
+  background-color: inherit;
   font-size: 1.6rem;
   font-weight: 700;
   text-decoration: none;
+  transition: transform var(--transicion);
 }
 
-body > header > a:first-child {
-  color: var(--color-acento);
-  background-color: inherit;
+body > header > a:first-child:hover {
+  transform: rotate(-3deg) scale(1.05);
 }
 
-img {
-  display: block;
-}
-
-video {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-nav {
+body > header nav {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--espacio-medio) var(--espacio-grande);
+  gap: 0.35rem;
   font-size: 0.9rem;
 }
 
-nav a {
+body > header nav a {
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background-color var(--transicion), color var(--transicion);
+}
+
+body > header nav a:hover {
+  background-color: var(--color-arena);
+  color: var(--color-acento);
+}
+
+/* La seccion actual se marca con un fondo y un subrayado bien visibles. */
+body > header nav a[aria-current="page"] {
+  background-color: var(--color-menta);
+  color: var(--color-verde);
+  font-weight: 700;
+  box-shadow: inset 0 -3px 0 var(--color-verde);
+}
+
+/* Boton de menu: solo lo muestra JavaScript y solo en pantallas pequenas. */
+body > header > button {
+  display: none;
+}
+
+/* Herramientas: buscador, idioma y ayuda. */
+body > header > div {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-pequeno);
+  margin-left: auto;
+}
+
+body > header > div > a,
+body > header > div > button {
+  display: inline-flex;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.7rem;
+  border: 1px solid var(--color-linea);
+  border-radius: 999px;
+  background-color: var(--color-superficie);
+  color: var(--color-texto);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color var(--transicion), color var(--transicion), transform var(--transicion);
+}
+
+body > header > div > a:hover,
+body > header > div > button:hover {
+  border-color: var(--color-acento);
+  color: var(--color-acento);
+  transform: translateY(-1px);
+}
+
+/* Buscador: el formulario hace de caja y el campo y el boton van dentro.
+   La lista de sugerencias se posiciona respecto a las herramientas de la cabecera. */
+body > header > div {
+  position: relative;
+}
+
+form[role="search"] {
+  display: flex;
+  height: 2.5rem;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0 0.25rem 0 1rem;
+  border: 1px solid var(--color-linea);
+  border-radius: 999px;
+  background-color: var(--color-superficie);
+  color: var(--color-texto);
+  transition: border-color var(--transicion), box-shadow var(--transicion);
+}
+
+/* El foco se indica en toda la caja del buscador. */
+form[role="search"]:focus-within {
+  border-color: var(--color-verde);
+  box-shadow: 0 0 0 4px var(--color-menta);
+}
+
+form[role="search"] label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+form[role="search"] input {
+  width: 9.5rem;
+  min-width: 0;
+  height: 100%;
+  flex: 1;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+form[role="search"] input::placeholder {
+  color: var(--color-texto-suave);
+  opacity: 1;
+}
+
+form[role="search"] input:focus {
+  outline: none;
+}
+
+form[role="search"] > button {
+  display: flex;
+  width: 2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: var(--color-verde);
+  color: var(--color-boton-texto);
+  cursor: pointer;
+  transition: background-color var(--transicion);
+}
+
+form[role="search"] > button:hover {
+  background-color: var(--color-acento);
+}
+
+/* Lista de sugerencias que crea el buscador mientras se escribe. */
+form[role="search"] > ul {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  z-index: 20;
+  width: min(25rem, calc(100vw - 2rem));
+  max-height: 70vh;
+  margin: 0;
+  padding: 0.4rem;
+  overflow-y: auto;
+  border: 1px solid var(--color-linea);
+  border-radius: var(--radio);
+  background-color: var(--color-superficie);
+  color: var(--color-texto);
+  box-shadow: var(--sombra);
+  list-style: none;
+}
+
+form[role="search"] > ul[hidden] {
+  display: none;
+}
+
+form[role="search"] > ul > li {
+  border-radius: 0.5rem;
+}
+
+form[role="search"] > ul > li > a {
+  display: block;
+  padding: 0.55rem 0.75rem;
   text-decoration: none;
 }
 
-nav a:hover {
-  color: var(--color-acento);
-  background-color: var(--color-fondo);
+form[role="search"] > ul > li > a > strong {
+  display: block;
+  line-height: 1.3;
 }
 
-footer {
+form[role="search"] > ul > li > a > span {
+  display: block;
+  color: var(--color-texto-suave);
+  background-color: inherit;
+  font-size: 0.8rem;
+}
+
+form[role="search"] > ul > li[aria-selected="true"],
+form[role="search"] > ul > li:hover {
+  background-color: var(--color-menta);
+  color: var(--color-verde);
+  box-shadow: inset 4px 0 0 var(--color-verde);
+}
+
+form[role="search"] > ul > li:last-child:not(:first-child) {
+  margin-top: 0.3rem;
+  border-top: 1px solid var(--color-linea);
+}
+
+form[role="search"] > ul > li[role="presentation"] {
+  padding: 0.6rem 0.75rem;
+  color: var(--color-texto-suave);
+  background-color: inherit;
+  font-size: 0.9rem;
+}
+
+form[role="search"] > ul > li[role="presentation"] > a {
+  display: inline;
+  padding: 0;
+  color: var(--color-verde);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+form[role="search"] > ul > li[role="presentation"]:hover {
+  box-shadow: none;
+}
+
+/* =============================================
+   MIGAS DE PAN
+   ============================================= */
+main > nav:first-child {
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+  font-size: 0.85rem;
+}
+
+main > nav:first-child ol {
   display: flex;
-  justify-content: space-between;
-  gap: var(--espacio-medio);
-  padding: var(--espacio-grande) 0 2.5rem;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+main > nav:first-child li + li::before {
+  margin: 0 0.6rem;
+  color: var(--color-texto-suave);
+  background-color: inherit;
+  content: "›";
+}
+
+main > nav:first-child a {
+  color: var(--color-verde);
+  background-color: inherit;
+}
+
+main > nav:first-child a[aria-current="page"] {
+  color: var(--color-texto-suave);
+  text-decoration: none;
+}
+
+/* =============================================
+   PIE DE PAGINA
+   ============================================= */
+footer {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: var(--espacio-grande);
+  padding: var(--espacio-seccion) 0 2.5rem;
   border-top: 1px solid var(--color-linea);
   background-color: var(--color-fondo);
   color: var(--color-texto-suave);
-  font-size: clamp(0.8rem, 1.5vw, 0.85rem);
+  font-size: 0.875rem;
 
   /* Nesting: estas reglas solo afectan al contenido del footer. */
+  & h2 {
+    margin-bottom: 0.6rem;
+    color: var(--color-texto);
+    background-color: inherit;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
   & p {
-    margin: 0;
+    margin: 0 0 0.4rem;
   }
 
   & address {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
     font-style: normal;
   }
 
+  & nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
   & a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     color: var(--color-verde);
     background-color: inherit;
+    transition: color var(--transicion);
+  }
+
+  & a:hover {
+    color: var(--color-acento);
+  }
+
+  & time {
+    color: var(--color-texto);
+    background-color: inherit;
+    font-weight: 700;
   }
 }
 
 /* =============================================
    ELEMENTOS COMPARTIDOS
    ============================================= */
+/* Enlace para saltar al contenido. */
 body > a:first-child {
   position: absolute;
   top: 1rem;
   left: -9999px;
-  z-index: 2;
+  z-index: 30;
   padding: var(--espacio-pequeno) var(--espacio-medio);
   background-color: var(--color-acento);
-  color: #fff;
+  color: var(--color-boton-texto);
 }
 
 body > a:first-child:focus {
   left: 1rem;
+}
+
+/* Aviso emergente (toast) para confirmar acciones. */
+body > [role="status"] {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  z-index: 40;
+  max-width: calc(100% - 2rem);
+  padding: 0.8rem 1.2rem;
+  border-radius: var(--radio);
+  background-color: var(--color-texto);
+  color: var(--color-fondo);
+  box-shadow: var(--sombra);
+  font-size: 0.95rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 1rem);
+  transition: opacity var(--transicion), transform var(--transicion);
+}
+
+body > [role="status"][data-visible="true"] {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+body > [role="status"]:empty {
+  padding: 0;
+}
+
+/* Boton para volver arriba. */
+body > button {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 35;
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background-color: var(--color-verde);
+  color: var(--color-boton-texto);
+  box-shadow: var(--sombra);
+  cursor: pointer;
+  transition: background-color var(--transicion), transform var(--transicion);
+}
+
+body > button:hover {
+  background-color: var(--color-acento);
+  transform: translateY(-3px);
+}
+
+body > button[hidden] {
+  display: none;
+}
+
+/* Botones dentro del contenido. Los enlaces con aspecto de boton
+   reutilizan este estilo desde la hoja de cada pagina. */
+main button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.2rem;
+  border: 2px solid var(--color-verde);
+  border-radius: 999px;
+  background-color: var(--color-verde);
+  color: var(--color-boton-texto);
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--transicion), border-color var(--transicion), transform var(--transicion);
+}
+
+main button:hover {
+  border-color: transparent;
+  background-color: var(--color-acento);
+  color: var(--color-boton-texto);
+  transform: translateY(-2px);
+}
+
+main button[hidden] {
+  display: none;
 }
 
 /* =============================================
@@ -208,7 +614,7 @@ main > header > h1 + p {
 }
 
 /* =============================================
-   ADAPTACION A PANTALLAS PEQUENAS
+   ADAPTACION A PANTALLAS MEDIANAS Y PEQUENAS
    ============================================= */
 @media (max-width: 700px) {
   body > header,
@@ -217,20 +623,80 @@ main > header > h1 + p {
     width: calc(100% - 2rem);
   }
 
-  body > header {
-    align-items: flex-start;
+  /* Cuando JavaScript esta activo el menu se pliega tras un boton. */
+  body > header > button:not([hidden]) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid var(--color-linea);
+    border-radius: 999px;
+    background-color: var(--color-superficie);
+    color: var(--color-texto);
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  body > header > button[aria-expanded="false"] + nav {
+    display: none;
+  }
+
+  body > header nav {
+    width: 100%;
     flex-direction: column;
+    margin-left: 0;
+    font-size: 1rem;
+  }
+
+  body > header nav a {
+    padding: 0.7rem 1rem;
+  }
+
+  body > header > div {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  form[role="search"] {
+    flex: 1;
+  }
+
+  form[role="search"] input {
+    width: auto;
   }
 
   footer {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 
+  body > button {
+    right: 1rem;
+    bottom: 1rem;
+  }
 }
 
-/* Evita animaciones de desplazamiento para quien las desactiva. */
+/* Evita animaciones para quien las desactiva en su sistema. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms;
+    animation-duration: 0.01ms;
+  }
+}
+
+/* Al imprimir se ocultan los elementos de navegacion. */
+@media print {
+  body > header > div,
+  body > header > button,
+  body > button,
+  main > nav:first-child {
+    display: none;
   }
 }

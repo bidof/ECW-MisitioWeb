@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ayuda del sitio de David: cómo navegar, cómo buscar, atajos de teclado, accesibilidad y preguntas frecuentes.">
+  <meta name="author" content="David Alvarez Diaz">
+  <title>Ayuda | David</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="en" href="en/ayuda.html">
+  <link rel="stylesheet" href="css/base.css?v=20261112">
+  <link rel="stylesheet" href="css/utilidades.css?v=20261112">
+  <script src="js/main.js?v=20261112" defer></script>
+</head>
+<body>
+  <a href="#contenido">Saltar al contenido</a>
+  <header>
+    <a href="index.html" title="Ir a la portada">David.</a>
+    <button type="button" aria-expanded="false" aria-controls="menu" hidden><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menú</button>
+    <nav id="menu" aria-label="Navegación principal">
+      <a href="index.html">Inicio</a>
+      <a href="sobre-mi.html">Sobre mí</a>
+      <a href="japon.html">Viajes</a>
+      <a href="musica.html">Música</a>
+      <a href="proyectos.html">Formación</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <div>
+      <form role="search" action="buscar.html" method="get">
+        <label for="buscador">Buscar en el sitio</label>
+        <input type="search" id="buscador" name="q" placeholder="Buscar en el sitio…" autocomplete="off" title="Escribe para ver sugerencias. Atajo de teclado: /">
+        <button type="submit" aria-label="Buscar" title="Buscar"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      </form>
+      <a href="en/ayuda.html" hreflang="en" lang="en" aria-label="English" title="Read this page in English">EN</a>
+      <a href="ayuda.html" aria-label="Ayuda (?)" title="Ayuda, preguntas frecuentes y atajos de teclado">?</a>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <nav aria-label="Migas de pan">
+      <ol>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="ayuda.html" aria-current="page">Ayuda</a></li>
+      </ol>
+    </nav>
+    <header>
+      <p>Ayuda</p>
+      <h1>¿Cómo puedo ayudarte?</h1>
+      <p>Aquí tienes todo lo necesario para moverte por el sitio, encontrar lo que buscas y adaptarlo a tu manera de navegar.</p>
+    </header>
+    <nav aria-label="En esta página">
+      <ul>
+        <li><a href="#navegar">Cómo navegar</a></li>
+        <li><a href="#buscar">Cómo buscar</a></li>
+        <li><a href="#atajos">Atajos de teclado</a></li>
+        <li><a href="#accesibilidad">Accesibilidad</a></li>
+        <li><a href="#preguntas">Preguntas frecuentes</a></li>
+        <li><a href="#cambios">Historial de cambios</a></li>
+      </ul>
+    </nav>
+    <section id="navegar" aria-labelledby="titulo-navegar">
+      <h2 id="titulo-navegar">Cómo navegar</h2>
+      <ul>
+        <li><strong>Menú principal:</strong> está arriba en todas las páginas y resalta con fondo de color la sección en la que estás. En el móvil se abre con el botón «Menú».</li>
+        <li><strong>Migas de pan:</strong> debajo de la cabecera verás el camino desde la portada hasta la página actual. Pulsa «Inicio» para volver.</li>
+        <li><strong>Mapa del sitio:</strong> el <a href="mapa.html">mapa del sitio</a> muestra todas las páginas y secciones en un solo lugar.</li>
+        <li><strong>Pie de página:</strong> incluye la fecha de la última actualización, enlaces de ayuda y mis redes.</li>
+      </ul>
+    </section>
+    <section id="buscar" aria-labelledby="titulo-buscar">
+      <h2 id="titulo-buscar">Cómo buscar</h2>
+      <p>El buscador de la cabecera muestra sugerencias mientras escribes. Pulsa <kbd>Intro</kbd> para ver todos los resultados en la <a href="buscar.html">página del buscador</a>.</p>
+      <ul>
+        <li>Puedes buscar cualquier palabra que aparezca en el sitio; al pulsar un resultado irás directamente a la parte de la página donde aparece.</li>
+        <li>No hace falta escribir tildes: «japon» encuentra «Japón».</li>
+        <li>Puedes escribir varias palabras, por ejemplo «unity juegos».</li>
+        <li>Si te equivocas al escribir, el buscador te propone la palabra correcta.</li>
+        <li>Las palabras encontradas aparecen resaltadas en los resultados.</li>
+      </ul>
+    </section>
+    <section id="atajos" aria-labelledby="titulo-atajos">
+      <h2 id="titulo-atajos">Atajos de teclado</h2>
+      <table>
+        <caption>Todo el sitio se puede usar solo con el teclado.</caption>
+        <thead>
+          <tr>
+            <th scope="col">Tecla</th>
+            <th scope="col">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><kbd>/</kbd></td>
+            <td>Ir al buscador desde cualquier página.</td>
+          </tr>
+          <tr>
+            <td><kbd>↑</kbd> <kbd>↓</kbd></td>
+            <td>Moverse por las sugerencias del buscador.</td>
+          </tr>
+          <tr>
+            <td><kbd>Intro</kbd></td>
+            <td>Abrir la sugerencia elegida o ver todos los resultados.</td>
+          </tr>
+          <tr>
+            <td><kbd>Esc</kbd></td>
+            <td>Cerrar las sugerencias o el menú del móvil.</td>
+          </tr>
+          <tr>
+            <td><kbd>Tab</kbd></td>
+            <td>Pasar al siguiente enlace o control. El primero es «Saltar al contenido».</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section id="accesibilidad" aria-labelledby="titulo-accesibilidad">
+      <h2 id="titulo-accesibilidad">Accesibilidad</h2>
+      <ul>
+        <li>Los textos tienen un contraste mínimo de 7:1 con el fondo.</li>
+        <li>Todas las imágenes, audios y vídeos tienen textos alternativos o descripciones.</li>
+        <li>Si tu sistema pide reducir el movimiento, se desactivan las animaciones.</li>
+        <li>El enlace <strong>EN</strong> de la cabecera abre la misma página en inglés.</li>
+      </ul>
+    </section>
+    <section id="preguntas" aria-labelledby="titulo-preguntas">
+      <h2 id="titulo-preguntas">Preguntas frecuentes</h2>
+      <details>
+        <summary>¿Cómo puedo contactar contigo?</summary>
+        <p>Desde la <a href="contacto.html">página de contacto</a> tienes mi correo, mi GitHub y un formulario que prepara el mensaje por ti.</p>
+      </details>
+      <details>
+        <summary>¿El sitio está disponible en otros idiomas?</summary>
+        <p>Sí, todas las páginas están en español y en inglés. Usa el enlace «EN» o «ES» de la cabecera para cambiar de idioma sin perder la página en la que estás.</p>
+      </details>
+      <details>
+        <summary>No se oye ningún audio en la página de música, ¿qué hago?</summary>
+        <p>Pulsa el botón de reproducir de cada canción y comprueba el volumen de tu dispositivo. Solo suena un fragmento a la vez: al empezar uno, el anterior se detiene y la canción activa se marca con el símbolo ♪.</p>
+      </details>
+      <details>
+        <summary>¿Puedo usar el sitio sin JavaScript?</summary>
+        <p>Sí. Todo el contenido, el menú y los enlaces funcionan sin JavaScript. Solo el buscador y la validación del formulario lo necesitan.</p>
+      </details>
+      <details>
+        <summary>¿Cada cuánto se actualiza el sitio?</summary>
+        <p>Cada vez que hay novedades. La fecha de la última actualización aparece en el pie de todas las páginas y el detalle está en el historial de cambios.</p>
+      </details>
+    </section>
+    <section id="cambios" aria-labelledby="titulo-cambios">
+      <h2 id="titulo-cambios">Historial de cambios</h2>
+      <ol reversed>
+        <li><time datetime="2026-11-10">10 de noviembre de 2026</time>: buscador con sugerencias, versión en inglés, migas de pan, mapa del sitio, página de contacto con formulario, referencias, página de ayuda y aficiones agrupadas.</li>
+        <li><time datetime="2026-10-03">3 de octubre de 2026</time>: primera versión con cinco páginas: inicio, sobre mí, viajes, música y formación.</li>
+      </ol>
+      <p>¿No encuentras lo que necesitas? <a href="contacto.html">Escríbeme</a> y te ayudo.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <h2>David Alvarez Diaz</h2>
+      <p>Ingeniero de software y estudiante del Máster en Ingeniería Web en la Universidad de Oviedo.</p>
+      <p>Última actualización: <time datetime="2026-11-10">10 de noviembre de 2026</time></p>
+      <p>© 2026 · uo283196 · HTML5, CSS y JavaScript</p>
+    </div>
+    <nav aria-label="Enlaces del sitio">
+      <h2>El sitio</h2>
+      <a href="mapa.html">Mapa del sitio</a>
+      <a href="buscar.html">Buscador</a>
+      <a href="ayuda.html">Ayuda</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <div>
+      <h2>Contacto y redes</h2>
+      <address>
+        <a href="mailto:davor2205@gmail.com"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>davor2205@gmail.com</a>
+        <a href="https://github.com/bidof" target="_blank" rel="me noopener noreferrer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17.3 4.3 18.3 4.6 18.3 4.6c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>GitHub (bidof)</a>
+      </address>
+    </div>
+  </footer>
+</body>
+</html>

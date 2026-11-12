@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Help for David's site: how to browse, how to search, keyboard shortcuts, accessibility and FAQ.">
+  <meta name="author" content="David Alvarez Diaz">
+  <title>Help | David</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="es" href="../ayuda.html">
+  <link rel="stylesheet" href="../css/base.css?v=20261112">
+  <link rel="stylesheet" href="../css/utilidades.css?v=20261112">
+  <script src="../js/main.js?v=20261112" defer></script>
+</head>
+<body>
+  <a href="#contenido">Skip to content</a>
+  <header>
+    <a href="index.html" title="Go to the home page">David.</a>
+    <button type="button" aria-expanded="false" aria-controls="menu" hidden><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu</button>
+    <nav id="menu" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="sobre-mi.html">About me</a>
+      <a href="japon.html">Travel</a>
+      <a href="musica.html">Music</a>
+      <a href="proyectos.html">Education</a>
+      <a href="contacto.html">Contact</a>
+    </nav>
+    <div>
+      <form role="search" action="buscar.html" method="get">
+        <label for="buscador">Search the site</label>
+        <input type="search" id="buscador" name="q" placeholder="Search the site…" autocomplete="off" title="Type to see suggestions. Keyboard shortcut: /">
+        <button type="submit" aria-label="Search" title="Search"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      </form>
+      <a href="../ayuda.html" hreflang="es" lang="es" aria-label="Español" title="Leer esta página en español">ES</a>
+      <a href="ayuda.html" aria-label="Help (?)" title="Help, frequently asked questions and keyboard shortcuts">?</a>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <nav aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ayuda.html" aria-current="page">Help</a></li>
+      </ol>
+    </nav>
+    <header>
+      <p>Help</p>
+      <h1>How can I help you?</h1>
+      <p>Here is everything you need to move around the site, find what you are looking for and adapt it to the way you browse.</p>
+    </header>
+    <nav aria-label="On this page">
+      <ul>
+        <li><a href="#navegar">How to browse</a></li>
+        <li><a href="#buscar">How to search</a></li>
+        <li><a href="#atajos">Keyboard shortcuts</a></li>
+        <li><a href="#accesibilidad">Accessibility</a></li>
+        <li><a href="#preguntas">FAQ</a></li>
+        <li><a href="#cambios">Change log</a></li>
+      </ul>
+    </nav>
+    <section id="navegar" aria-labelledby="titulo-navegar">
+      <h2 id="titulo-navegar">How to browse</h2>
+      <ul>
+        <li><strong>Main menu:</strong> it is at the top of every page and highlights the section you are in with a coloured background. On mobile it opens with the “Menu” button.</li>
+        <li><strong>Breadcrumb:</strong> below the header you will see the path from the home page to the current page. Select “Home” to go back.</li>
+        <li><strong>Site map:</strong> the <a href="mapa.html">site map</a> shows every page and section in one place.</li>
+        <li><strong>Footer:</strong> it includes the date of the last update, help links and my social profiles.</li>
+      </ul>
+    </section>
+    <section id="buscar" aria-labelledby="titulo-buscar">
+      <h2 id="titulo-buscar">How to search</h2>
+      <p>The search box in the header shows suggestions as you type. Press <kbd>Enter</kbd> to see every result on the <a href="buscar.html">search page</a>.</p>
+      <ul>
+        <li>You can search for any word that appears on the site; selecting a result takes you straight to the part of the page where it appears.</li>
+        <li>You can type several words, for example “unity games”.</li>
+        <li>If you make a typo, the search suggests the right word.</li>
+        <li>Matching words are highlighted in the results.</li>
+      </ul>
+    </section>
+    <section id="atajos" aria-labelledby="titulo-atajos">
+      <h2 id="titulo-atajos">Keyboard shortcuts</h2>
+      <table>
+        <caption>The whole site can be used with the keyboard only.</caption>
+        <thead>
+          <tr>
+            <th scope="col">Key</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><kbd>/</kbd></td>
+            <td>Jump to the search box from any page.</td>
+          </tr>
+          <tr>
+            <td><kbd>↑</kbd> <kbd>↓</kbd></td>
+            <td>Move through the search suggestions.</td>
+          </tr>
+          <tr>
+            <td><kbd>Enter</kbd></td>
+            <td>Open the chosen suggestion or see every result.</td>
+          </tr>
+          <tr>
+            <td><kbd>Esc</kbd></td>
+            <td>Close the suggestions or the mobile menu.</td>
+          </tr>
+          <tr>
+            <td><kbd>Tab</kbd></td>
+            <td>Move to the next link or control. The first one is “Skip to content”.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section id="accesibilidad" aria-labelledby="titulo-accesibilidad">
+      <h2 id="titulo-accesibilidad">Accessibility</h2>
+      <ul>
+        <li>Text has a contrast ratio of at least 7:1 with the background.</li>
+        <li>Every image, audio clip and video has alternative text or a description.</li>
+        <li>If your system asks for reduced motion, animations are turned off.</li>
+        <li>The <strong>ES</strong> link in the header opens the same page in Spanish.</li>
+      </ul>
+    </section>
+    <section id="preguntas" aria-labelledby="titulo-preguntas">
+      <h2 id="titulo-preguntas">Frequently asked questions</h2>
+      <details>
+        <summary>How can I contact you?</summary>
+        <p>On the <a href="contacto.html">contact page</a> you will find my email, my GitHub and a form that prepares the message for you.</p>
+      </details>
+      <details>
+        <summary>Is the site available in other languages?</summary>
+        <p>Yes, every page is available in Spanish and English. Use the “ES” or “EN” link in the header to switch language without leaving the page you are on.</p>
+      </details>
+      <details>
+        <summary>I cannot hear any audio on the music page. What should I do?</summary>
+        <p>Press the play button of each song and check your device volume. Only one clip plays at a time: when one starts, the previous one stops and the active song is marked with the ♪ symbol.</p>
+      </details>
+      <details>
+        <summary>Can I use the site without JavaScript?</summary>
+        <p>Yes. All the content, the menu and the links work without JavaScript. Only the search and form validation need it.</p>
+      </details>
+      <details>
+        <summary>How often is the site updated?</summary>
+        <p>Whenever there is something new. The date of the last update appears in the footer of every page and the details are in the change log.</p>
+      </details>
+    </section>
+    <section id="cambios" aria-labelledby="titulo-cambios">
+      <h2 id="titulo-cambios">Change log</h2>
+      <ol reversed>
+        <li><time datetime="2026-11-10">10 November 2026</time>: search with suggestions, English version, breadcrumb, site map, contact page with form, references, help page and grouped hobbies.</li>
+        <li><time datetime="2026-10-03">3 October 2026</time>: first version with five pages: home, about me, travel, music and education.</li>
+      </ol>
+      <p>Can't find what you need? <a href="contacto.html">Write to me</a> and I will help you.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <h2>David Alvarez Diaz</h2>
+      <p>Software engineer and Master in Web Engineering student at the University of Oviedo.</p>
+      <p>Last updated: <time datetime="2026-11-10">10 November 2026</time></p>
+      <p>© 2026 · uo283196 · HTML5, CSS and JavaScript</p>
+    </div>
+    <nav aria-label="Site links">
+      <h2>The site</h2>
+      <a href="mapa.html">Site map</a>
+      <a href="buscar.html">Search</a>
+      <a href="ayuda.html">Help</a>
+      <a href="contacto.html">Contact</a>
+    </nav>
+    <div>
+      <h2>Contact and social</h2>
+      <address>
+        <a href="mailto:davor2205@gmail.com"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>davor2205@gmail.com</a>
+        <a href="https://github.com/bidof" target="_blank" rel="me noopener noreferrer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17.3 4.3 18.3 4.6 18.3 4.6c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>GitHub (bidof)</a>
+      </address>
+    </div>
+  </footer>
+</body>
+</html>

@@ -5,14 +5,35 @@ TECNOLOGIAS
 -----------
 
 HTML5
-Se utiliza para estructurar las cinco paginas con elementos semanticos y
-accesibles. Sus elementos nativos permiten incorporar imagenes adaptables,
+Se utiliza para estructurar las paginas con elementos semanticos y
+accesibles. El sitio tiene nueve paginas en espanol (inicio, sobre mi, viajes,
+musica, formacion, contacto, ayuda, mapa del sitio y buscador), sus nueve
+equivalentes en ingles dentro de la carpeta en/ y una pagina 404 bilingue. Sus elementos nativos permiten incorporar imagenes adaptables,
 audio y video sin instalar complementos.
 
 CSS
 Se utiliza para definir la presentacion y adaptar la distribucion del
 contenido a pantallas de escritorio y moviles. Las hojas de estilo estan
 separadas por pagina y comparten reglas generales.
+
+JAVASCRIPT
+Se utiliza como mejora progresiva: sin JavaScript todo el contenido y la
+navegacion siguen funcionando. Aporta el buscador interno con sugerencias,
+el menu plegable en movil, avisos emergentes de confirmacion,
+el boton para volver arriba, la validacion en linea del formulario de contacto
+y el control de los audios (solo suena uno a la vez y se marca el activo).
+No se usan bibliotecas: toda la logica esta en js/main.js.
+
+El buscador no usa un indice escrito a mano: cuando el usuario va a buscar,
+recorre el sitio empezando por la portada y el mapa del sitio, descarga cada
+fichero HTML con fetch(), lo analiza con DOMParser y sigue sus enlaces
+internos. De cada pagina indexa el texto de <main>, con una entrada por pagina
+y otra por cada seccion, articulo o titulo con id, para enlazar directamente
+con su ancla. Busca sin distinguir tildes ni mayusculas, resalta las
+coincidencias, muestra un fragmento del texto y sugiere correcciones si hay
+erratas. El indice se guarda en sessionStorage y se regenera cuando cambia la
+fecha de ultima actualizacion del pie. Necesita servirse desde un servidor web
+(GitHub Pages o uno local): abierto como archivo, el navegador bloquea fetch().
 
 CARACTERISTICAS MODERNAS DE CSS
 -------------------------------
@@ -43,7 +64,8 @@ imagen/kyoto_poster.jpeg.
 HERRAMIENTAS Y DEPENDENCIAS
 ---------------------------
 
-El sitio no utiliza bibliotecas JavaScript ni frameworks. Se prefieren las
+El sitio no utiliza bibliotecas JavaScript ni frameworks; todo el
+JavaScript es propio. Se prefieren las
 funciones nativas del navegador para reducir dependencias y facilitar el
 desarrollo.
 
@@ -55,10 +77,31 @@ conexion a Internet para cargarlas.
 CONTENIDO
 --------------------------------
 
-El sitio consta de cinco paginas: inicio, sobre mi, viajes, musica y formacion.
-Incluye datos personales, fotografia personal, fotografias de viajes, un video
-y varios audios de canciones.
+El sitio consta de las paginas de inicio, sobre mi, viajes, musica, formacion
+y contacto, mas las paginas de apoyo de ayuda, mapa del sitio y buscador.
+Incluye datos personales, fotografia personal, aficiones agrupadas,
+fotografias de viajes, un video, varios audios de canciones, formulario de
+contacto, enlace a GitHub y referencias bajo peticion.
+
+USABILIDAD Y AYUDA
+------------------
+
+- Migas de pan en todas las paginas interiores y mapa del sitio.
+- Pagina de ayuda con atajos de teclado, preguntas frecuentes e historial de
+  cambios.
+- Fecha de la ultima actualizacion en el pie de todas las paginas. Al publicar
+  cambios hay que actualizarla en las 19 paginas y en el historial de ayuda.
+- Version completa en ingles: el enlace EN/ES de la cabecera abre la misma
+  pagina en el otro idioma.
+
+VALIDACION
+----------
+
+Todas las paginas pasan el validador HTML del W3C sin errores ni avisos. Las
+hojas de estilo pasan el validador CSS del W3C salvo container-name,
+container-type y @container, que son CSS estandar que el validador todavia no
+reconoce.
 
 Los audios de musica.html son fragmentos breves (de unos 15 a 60 segundos) de
-cada cancion, comprimidos para reducir el peso del sitio. El titulo de cada uno
-lo indica con la palabra "fragmento".
+cada cancion, comprimidos para reducir el peso del sitio. Cada tarjeta lo
+indica con la palabra "Fragmento" seguida del nombre de la cancion.
