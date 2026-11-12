@@ -13,7 +13,7 @@
   <link rel="alternate" hreflang="es" href="../sobre-mi.html">
   <link rel="stylesheet" href="../css/base.css?v=20261112">
   <link rel="stylesheet" href="../css/sobre-mi.css?v=20261112">
-  <script type="module" src="../js/realeye.js?v=20261112"></script>
+  <script src="../js/ojos.js?v=20261112" defer></script>
   <script src="../js/main.js?v=20261112" defer></script>
   <script>
     (function(c,l,a,r,i,t,y){
@@ -25,10 +25,10 @@
 </head>
 <body>
   <a href="#contenido">Skip to content</a>
-  <header data-re-aoi-name="cabecera">
+  <header>
     <a href="index.html" title="Go to the home page">David.</a>
     <button type="button" aria-expanded="false" aria-controls="menu" hidden><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu</button>
-    <nav id="menu" data-re-aoi-name="menu-principal" aria-label="Main navigation">
+    <nav id="menu" aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a href="sobre-mi.html" aria-current="page">About me</a>
       <a href="japon.html">Travel</a>
@@ -37,7 +37,7 @@
       <a href="contacto.html">Contact</a>
     </nav>
     <div>
-      <form role="search" action="buscar.html" method="get" data-re-aoi-name="buscador-cabecera">
+      <form role="search" action="buscar.html" method="get">
         <label for="buscador">Search the site</label>
         <input type="search" id="buscador" name="q" placeholder="Search the site…" autocomplete="off" title="Type to see suggestions. Keyboard shortcut: /">
         <button type="submit" aria-label="Search" title="Search"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
@@ -48,7 +48,7 @@
   </header>
 
   <main id="contenido">
-    <nav aria-label="Breadcrumb" data-re-aoi-name="migas">
+    <nav aria-label="Breadcrumb">
       <ol>
         <li><a href="index.html">Home</a></li>
         <li><a href="sobre-mi.html" aria-current="page">About me</a></li>
@@ -75,14 +75,14 @@
         <img src="../imagen/img_escritorio.jpeg" width="396" height="704" alt="Personal photo of David wearing a white shirt and a green tie, in front of a mirror" decoding="async">
       </picture>
     </figure>
-    <section id="biografia" data-re-aoi-name="biografia" aria-labelledby="titulo-biografia">
+    <section id="biografia" aria-labelledby="titulo-biografia">
       <h2 id="titulo-biografia">The way I see things</h2>
       <p>I am a software engineer and I like turning ideas into useful projects. This blog is a collection of interests: trips that are still on the map, records that keep playing and questions I feel like exploring.</p>
       <p>My journey began with the Software Engineering degree at the University of Oviedo, and today I keep learning in the Master in Web Engineering. I am interested in how a well-built page, fast, accessible and easy to maintain, can make a difference for the people who use it.</p>
       <p>I have worked with very different technologies: web applications, video games with Unity and virtual reality experiences. I like switching fields because each one makes me approach problems in a different way. In the <a href="proyectos.html">education</a> section you can see my projects in more detail.</p>
       <p>Outside work I have several hobbies that have been with me for years; you will find them <a href="#aficiones">all together</a> below. If you want to know more, you can <a href="contacto.html">write to me from the contact page</a>.</p>
     </section>
-    <section id="datos" data-re-aoi-name="datos" aria-labelledby="titulo-datos">
+    <section id="datos" aria-labelledby="titulo-datos">
       <h2 id="titulo-datos">My details</h2>
       <dl>
         <dt>Full name</dt>
@@ -97,27 +97,27 @@
         <dd><a href="contacto.html">Contact page and form</a></dd>
       </dl>
     </section>
-    <section id="aficiones" data-re-aoi-name="aficiones" aria-labelledby="titulo-aficiones">
+    <section id="aficiones" aria-labelledby="titulo-aficiones">
       <h2 id="titulo-aficiones">My hobbies</h2>
       <p>Everything I do when I step away from the computer, in one place.</p>
-      <article id="musica-guitarra" data-re-aoi-name="musica-guitarra">
+      <article id="musica-guitarra">
         <p>Music</p>
         <h3>Classic rock and guitar</h3>
         <p>Music is one of my great passions. I especially like music from other eras, such as classic rock, blues and soul, and besides listening to it I play the guitar. Playing helps me unwind and better understand the music I listen to.</p>
         <a href="musica.html">Listen to my selection →</a>
       </article>
-      <article id="viajes" data-re-aoi-name="viajes">
+      <article id="viajes">
         <p>Travel</p>
         <h3>Japan and car culture</h3>
         <p>There is always a trip on my list: Japan, to see up close the contrast between tradition and technology, and also its car culture.</p>
         <a href="japon.html">See the destination →</a>
       </article>
-      <article id="deporte" data-re-aoi-name="deporte">
+      <article id="deporte">
         <p>Sport</p>
         <h3>Archery and calisthenics</h3>
         <p>Archery is my favourite sport. I am drawn to the focus, technique and patience every shot requires. It is a way to unwind, improve little by little and learn to take care of every detail. I also do calisthenics, which lets me work on strength and body control using my own weight.</p>
       </article>
-      <article id="juegos" data-re-aoi-name="juegos">
+      <article id="juegos">
         <p>Games</p>
         <h3>My favourite games</h3>
         <dl>
@@ -133,7 +133,7 @@
     </section>
   </main>
 
-  <footer data-re-aoi-name="pie">
+  <footer>
     <div>
       <h2>David Alvarez Diaz</h2>
       <p>Software engineer and Master in Web Engineering student at the University of Oviedo.</p>

@@ -35,6 +35,20 @@ erratas. El indice se guarda en sessionStorage y se regenera cuando cambia la
 fecha de ultima actualizacion del pie. Necesita servirse desde un servidor web
 (GitHub Pages o uno local): abierto como archivo, el navegador bloquea fetch().
 
+PRUEBAS DE USABILIDAD (solo rama tanda2)
+Microsoft Clarity registra los clics, toques y grabaciones de cada sesion.
+El seguimiento de ojos esta en js/ojos.js y usa la biblioteca WebGazer.js
+(Universidad de Brown), que estima la mirada con la webcam. Solo se activa a
+peticion del evaluador; los visitantes normales no descargan nada:
+  ?ojos=1    calibra (9 puntos, 5 pulsaciones cada uno) y empieza a registrar.
+             El registro continua al cambiar de pagina en la misma pestana.
+  ?ojos=ver  termina el registro y dibuja sobre la pagina el mapa de calor
+             o el recorrido de la mirada (fijaciones numeradas); permite
+             descargar todos los datos en JSON.
+  ?ojos=0    termina el registro sin mostrar nada.
+Los puntos se guardan en sessionStorage, en coordenadas de la pagina, y no
+se envian a ningun servidor.
+
 CARACTERISTICAS MODERNAS DE CSS
 -------------------------------
 

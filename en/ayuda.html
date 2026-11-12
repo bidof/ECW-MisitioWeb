@@ -13,7 +13,7 @@
   <link rel="alternate" hreflang="es" href="../ayuda.html">
   <link rel="stylesheet" href="../css/base.css?v=20261112">
   <link rel="stylesheet" href="../css/utilidades.css?v=20261112">
-  <script type="module" src="../js/realeye.js?v=20261112"></script>
+  <script src="../js/ojos.js?v=20261112" defer></script>
   <script src="../js/main.js?v=20261112" defer></script>
   <script>
     (function(c,l,a,r,i,t,y){
@@ -25,10 +25,10 @@
 </head>
 <body>
   <a href="#contenido">Skip to content</a>
-  <header data-re-aoi-name="cabecera">
+  <header>
     <a href="index.html" title="Go to the home page">David.</a>
     <button type="button" aria-expanded="false" aria-controls="menu" hidden><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu</button>
-    <nav id="menu" data-re-aoi-name="menu-principal" aria-label="Main navigation">
+    <nav id="menu" aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a href="sobre-mi.html">About me</a>
       <a href="japon.html">Travel</a>
@@ -37,7 +37,7 @@
       <a href="contacto.html">Contact</a>
     </nav>
     <div>
-      <form role="search" action="buscar.html" method="get" data-re-aoi-name="buscador-cabecera">
+      <form role="search" action="buscar.html" method="get">
         <label for="buscador">Search the site</label>
         <input type="search" id="buscador" name="q" placeholder="Search the site…" autocomplete="off" title="Type to see suggestions. Keyboard shortcut: /">
         <button type="submit" aria-label="Search" title="Search"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
@@ -48,7 +48,7 @@
   </header>
 
   <main id="contenido">
-    <nav aria-label="Breadcrumb" data-re-aoi-name="migas">
+    <nav aria-label="Breadcrumb">
       <ol>
         <li><a href="index.html">Home</a></li>
         <li><a href="ayuda.html" aria-current="page">Help</a></li>
@@ -69,7 +69,7 @@
         <li><a href="#cambios">Change log</a></li>
       </ul>
     </nav>
-    <section id="navegar" data-re-aoi-name="navegar" aria-labelledby="titulo-navegar">
+    <section id="navegar" aria-labelledby="titulo-navegar">
       <h2 id="titulo-navegar">How to browse</h2>
       <ul>
         <li><strong>Main menu:</strong> it is at the top of every page and highlights the section you are in with a coloured background. On mobile it opens with the “Menu” button.</li>
@@ -78,7 +78,7 @@
         <li><strong>Footer:</strong> it includes the date of the last update, help links and my social profiles.</li>
       </ul>
     </section>
-    <section id="buscar" data-re-aoi-name="buscar" aria-labelledby="titulo-buscar">
+    <section id="buscar" aria-labelledby="titulo-buscar">
       <h2 id="titulo-buscar">How to search</h2>
       <p>The search box in the header shows suggestions as you type. Press <kbd>Enter</kbd> to see every result on the <a href="buscar.html">search page</a>.</p>
       <ul>
@@ -88,7 +88,7 @@
         <li>Matching words are highlighted in the results.</li>
       </ul>
     </section>
-    <section id="atajos" data-re-aoi-name="atajos" aria-labelledby="titulo-atajos">
+    <section id="atajos" aria-labelledby="titulo-atajos">
       <h2 id="titulo-atajos">Keyboard shortcuts</h2>
       <table>
         <caption>The whole site can be used with the keyboard only.</caption>
@@ -122,7 +122,7 @@
         </tbody>
       </table>
     </section>
-    <section id="accesibilidad" data-re-aoi-name="accesibilidad" aria-labelledby="titulo-accesibilidad">
+    <section id="accesibilidad" aria-labelledby="titulo-accesibilidad">
       <h2 id="titulo-accesibilidad">Accessibility</h2>
       <ul>
         <li>Text has a contrast ratio of at least 7:1 with the background.</li>
@@ -131,7 +131,7 @@
         <li>The <strong>ES</strong> link in the header opens the same page in Spanish.</li>
       </ul>
     </section>
-    <section id="preguntas" data-re-aoi-name="preguntas" aria-labelledby="titulo-preguntas">
+    <section id="preguntas" aria-labelledby="titulo-preguntas">
       <h2 id="titulo-preguntas">Frequently asked questions</h2>
       <details>
         <summary>How can I contact you?</summary>
@@ -154,7 +154,7 @@
         <p>Whenever there is something new. The date of the last update appears in the footer of every page and the details are in the change log.</p>
       </details>
     </section>
-    <section id="cambios" data-re-aoi-name="cambios" aria-labelledby="titulo-cambios">
+    <section id="cambios" aria-labelledby="titulo-cambios">
       <h2 id="titulo-cambios">Change log</h2>
       <ol reversed>
         <li><time datetime="2026-11-10">10 November 2026</time>: search with suggestions, English version, breadcrumb, site map, contact page with form, references, help page and grouped hobbies.</li>
@@ -164,7 +164,7 @@
     </section>
   </main>
 
-  <footer data-re-aoi-name="pie">
+  <footer>
     <div>
       <h2>David Alvarez Diaz</h2>
       <p>Software engineer and Master in Web Engineering student at the University of Oviedo.</p>

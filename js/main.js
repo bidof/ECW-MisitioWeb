@@ -638,7 +638,7 @@
         var opcion = lista.querySelectorAll('[role="option"]')[activa];
         var destino = opcion.querySelector('a').href;
         /* En un estudio de RealEye se conservan sus parametros al cambiar de pagina. */
-        window.location.href = window.realEyeEnlace ? window.realEyeEnlace(destino) : destino;
+        window.location.href = destino;
       } else if (evento.key === 'Escape') {
         if (!lista.hidden) {
           evento.stopPropagation();
