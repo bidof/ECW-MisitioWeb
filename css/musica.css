@@ -123,14 +123,28 @@ main > header + section > article:hover {
   transform: translateY(-3px);
 }
 
-/* JavaScript marca la cancion activa: la tarjeta se resalta. */
+/* JavaScript marca la cancion activa: el disco gira y la tarjeta se resalta. */
 main > header + section > article[data-sonando="true"] {
   border-color: var(--color-verde);
   box-shadow: 0 0 0 2px var(--color-verde), var(--sombra);
 }
 
+main > header + section > article[data-sonando="true"]::before {
+  animation: girar 2.4s linear infinite;
+}
+
 main > header + section > article[data-sonando="true"] > p:nth-of-type(3)::before {
   content: "♪ ";
+}
+
+@keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 700px) {
