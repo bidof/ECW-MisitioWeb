@@ -636,7 +636,9 @@
       } else if (evento.key === 'Enter' && activa >= 0) {
         evento.preventDefault();
         var opcion = lista.querySelectorAll('[role="option"]')[activa];
-        window.location.href = opcion.querySelector('a').href;
+        var destino = opcion.querySelector('a').href;
+        /* En un estudio de RealEye se conservan sus parametros al cambiar de pagina. */
+        window.location.href = window.realEyeEnlace ? window.realEyeEnlace(destino) : destino;
       } else if (evento.key === 'Escape') {
         if (!lista.hidden) {
           evento.stopPropagation();
@@ -723,8 +725,11 @@
       pintarResultados();
       var consulta = entradaPagina.value.trim();
       if (formCabecera) { formCabecera.querySelector('input').value = consulta; }
-      var nueva = window.location.pathname + (consulta ? '?q=' + encodeURIComponent(consulta) : '');
-      window.history.replaceState(null, '', nueva);
+      /* Se cambia solo el parametro q y se conservan los demas (por ejemplo, los de RealEye). */
+      var parametrosUrl = new URLSearchParams(window.location.search);
+      if (consulta) { parametrosUrl.set('q', consulta); } else { parametrosUrl.delete('q'); }
+      var cadena = parametrosUrl.toString();
+      window.history.replaceState(null, '', window.location.pathname + (cadena ? '?' + cadena : ''));
     };
 
     var temporizadorPagina;

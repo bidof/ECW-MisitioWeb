@@ -13,6 +13,7 @@
   <link rel="alternate" hreflang="en" href="en/ayuda.html">
   <link rel="stylesheet" href="css/base.css?v=20261112">
   <link rel="stylesheet" href="css/utilidades.css?v=20261112">
+  <script type="module" src="js/realeye.js?v=20261112"></script>
   <script src="js/main.js?v=20261112" defer></script>
   <script>
     (function(c,l,a,r,i,t,y){
@@ -24,10 +25,10 @@
 </head>
 <body>
   <a href="#contenido">Saltar al contenido</a>
-  <header>
+  <header data-re-aoi-name="cabecera">
     <a href="index.html" title="Ir a la portada">David.</a>
     <button type="button" aria-expanded="false" aria-controls="menu" hidden><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menú</button>
-    <nav id="menu" aria-label="Navegación principal">
+    <nav id="menu" data-re-aoi-name="menu-principal" aria-label="Navegación principal">
       <a href="index.html">Inicio</a>
       <a href="sobre-mi.html">Sobre mí</a>
       <a href="japon.html">Viajes</a>
@@ -36,7 +37,7 @@
       <a href="contacto.html">Contacto</a>
     </nav>
     <div>
-      <form role="search" action="buscar.html" method="get">
+      <form role="search" action="buscar.html" method="get" data-re-aoi-name="buscador-cabecera">
         <label for="buscador">Buscar en el sitio</label>
         <input type="search" id="buscador" name="q" placeholder="Buscar en el sitio…" autocomplete="off" title="Escribe para ver sugerencias. Atajo de teclado: /">
         <button type="submit" aria-label="Buscar" title="Buscar"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
@@ -47,7 +48,7 @@
   </header>
 
   <main id="contenido">
-    <nav aria-label="Migas de pan">
+    <nav aria-label="Migas de pan" data-re-aoi-name="migas">
       <ol>
         <li><a href="index.html">Inicio</a></li>
         <li><a href="ayuda.html" aria-current="page">Ayuda</a></li>
@@ -68,7 +69,7 @@
         <li><a href="#cambios">Historial de cambios</a></li>
       </ul>
     </nav>
-    <section id="navegar" aria-labelledby="titulo-navegar">
+    <section id="navegar" data-re-aoi-name="navegar" aria-labelledby="titulo-navegar">
       <h2 id="titulo-navegar">Cómo navegar</h2>
       <ul>
         <li><strong>Menú principal:</strong> está arriba en todas las páginas y resalta con fondo de color la sección en la que estás. En el móvil se abre con el botón «Menú».</li>
@@ -77,7 +78,7 @@
         <li><strong>Pie de página:</strong> incluye la fecha de la última actualización, enlaces de ayuda y mis redes.</li>
       </ul>
     </section>
-    <section id="buscar" aria-labelledby="titulo-buscar">
+    <section id="buscar" data-re-aoi-name="buscar" aria-labelledby="titulo-buscar">
       <h2 id="titulo-buscar">Cómo buscar</h2>
       <p>El buscador de la cabecera muestra sugerencias mientras escribes. Pulsa <kbd>Intro</kbd> para ver todos los resultados en la <a href="buscar.html">página del buscador</a>.</p>
       <ul>
@@ -88,7 +89,7 @@
         <li>Las palabras encontradas aparecen resaltadas en los resultados.</li>
       </ul>
     </section>
-    <section id="atajos" aria-labelledby="titulo-atajos">
+    <section id="atajos" data-re-aoi-name="atajos" aria-labelledby="titulo-atajos">
       <h2 id="titulo-atajos">Atajos de teclado</h2>
       <table>
         <caption>Todo el sitio se puede usar solo con el teclado.</caption>
@@ -122,7 +123,7 @@
         </tbody>
       </table>
     </section>
-    <section id="accesibilidad" aria-labelledby="titulo-accesibilidad">
+    <section id="accesibilidad" data-re-aoi-name="accesibilidad" aria-labelledby="titulo-accesibilidad">
       <h2 id="titulo-accesibilidad">Accesibilidad</h2>
       <ul>
         <li>Los textos tienen un contraste mínimo de 7:1 con el fondo.</li>
@@ -131,7 +132,7 @@
         <li>El enlace <strong>EN</strong> de la cabecera abre la misma página en inglés.</li>
       </ul>
     </section>
-    <section id="preguntas" aria-labelledby="titulo-preguntas">
+    <section id="preguntas" data-re-aoi-name="preguntas" aria-labelledby="titulo-preguntas">
       <h2 id="titulo-preguntas">Preguntas frecuentes</h2>
       <details>
         <summary>¿Cómo puedo contactar contigo?</summary>
@@ -154,7 +155,7 @@
         <p>Cada vez que hay novedades. La fecha de la última actualización aparece en el pie de todas las páginas y el detalle está en el historial de cambios.</p>
       </details>
     </section>
-    <section id="cambios" aria-labelledby="titulo-cambios">
+    <section id="cambios" data-re-aoi-name="cambios" aria-labelledby="titulo-cambios">
       <h2 id="titulo-cambios">Historial de cambios</h2>
       <ol reversed>
         <li><time datetime="2026-11-10">10 de noviembre de 2026</time>: buscador con sugerencias, versión en inglés, migas de pan, mapa del sitio, página de contacto con formulario, referencias, página de ayuda y aficiones agrupadas.</li>
@@ -164,7 +165,7 @@
     </section>
   </main>
 
-  <footer>
+  <footer data-re-aoi-name="pie">
     <div>
       <h2>David Alvarez Diaz</h2>
       <p>Ingeniero de software y estudiante del Máster en Ingeniería Web en la Universidad de Oviedo.</p>

@@ -13,6 +13,7 @@
   <link rel="alternate" hreflang="en" href="en/proyectos.html">
   <link rel="stylesheet" href="css/base.css?v=20261112">
   <link rel="stylesheet" href="css/proyectos.css?v=20261112">
+  <script type="module" src="js/realeye.js?v=20261112"></script>
   <script src="js/main.js?v=20261112" defer></script>
   <script>
     (function(c,l,a,r,i,t,y){
@@ -24,10 +25,10 @@
 </head>
 <body>
   <a href="#contenido">Saltar al contenido</a>
-  <header>
+  <header data-re-aoi-name="cabecera">
     <a href="index.html" title="Ir a la portada">David.</a>
     <button type="button" aria-expanded="false" aria-controls="menu" hidden><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menú</button>
-    <nav id="menu" aria-label="Navegación principal">
+    <nav id="menu" data-re-aoi-name="menu-principal" aria-label="Navegación principal">
       <a href="index.html">Inicio</a>
       <a href="sobre-mi.html">Sobre mí</a>
       <a href="japon.html">Viajes</a>
@@ -36,7 +37,7 @@
       <a href="contacto.html">Contacto</a>
     </nav>
     <div>
-      <form role="search" action="buscar.html" method="get">
+      <form role="search" action="buscar.html" method="get" data-re-aoi-name="buscador-cabecera">
         <label for="buscador">Buscar en el sitio</label>
         <input type="search" id="buscador" name="q" placeholder="Buscar en el sitio…" autocomplete="off" title="Escribe para ver sugerencias. Atajo de teclado: /">
         <button type="submit" aria-label="Buscar" title="Buscar"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
@@ -47,7 +48,7 @@
   </header>
 
   <main id="contenido">
-    <nav aria-label="Migas de pan">
+    <nav aria-label="Migas de pan" data-re-aoi-name="migas">
       <ol>
         <li><a href="index.html">Inicio</a></li>
         <li><a href="proyectos.html" aria-current="page">Formación y proyectos</a></li>
@@ -58,9 +59,9 @@
       <h1>Ideas que se convierten en proyectos.</h1>
       <p>Mi formación en ingeniería del software me ha permitido trabajar en diferentes áreas del desarrollo, desde aplicaciones web hasta videojuegos, realidad virtual y tecnologías emergentes.</p>
     </header>
-    <section id="formacion" aria-labelledby="titulo-formacion">
+    <section id="formacion" data-re-aoi-name="formacion" aria-labelledby="titulo-formacion">
       <h2 id="titulo-formacion">Formación y experiencia</h2>
-      <article>
+      <article data-re-aoi-name="master-en-ingenieria-web">
         <p>Máster · En curso</p>
         <h3>Máster en Ingeniería Web</h3>
         <p>Actualmente curso el Máster en Ingeniería Web en la Universidad de Oviedo, donde continúo ampliando mis conocimientos en desarrollo y tecnologías web.</p>
@@ -69,7 +70,7 @@
           <li>Desarrollo web</li>
         </ul>
       </article>
-      <article>
+      <article data-re-aoi-name="grado-en-ingenieria-del-software">
         <p>Grado · Finalizado</p>
         <h3>Grado en Ingeniería del Software</h3>
         <p>Graduado en Ingeniería del Software por la Universidad de Oviedo, donde adquirí una base en programación, desarrollo de aplicaciones y diseño de sistemas software.</p>
@@ -78,7 +79,7 @@
           <li>Programación</li>
         </ul>
       </article>
-      <article>
+      <article data-re-aoi-name="desarrollador-de-software-en-ntt-data">
         <p>Experiencia laboral · 6 meses</p>
         <h3>Desarrollador de software en NTT DATA</h3>
         <p>Hace un año trabajé durante seis meses como desarrollador de software en NTT DATA, donde pude aplicar mis conocimientos en un entorno profesional y conocer de cerca el desarrollo de proyectos reales.</p>
@@ -88,9 +89,9 @@
         </ul>
       </article>
     </section>
-    <section id="proyectos" aria-labelledby="titulo-proyectos">
+    <section id="proyectos" data-re-aoi-name="proyectos" aria-labelledby="titulo-proyectos">
       <h2 id="titulo-proyectos">Proyectos</h2>
-      <article id="proyecto-web">
+      <article id="proyecto-web" data-re-aoi-name="proyecto-web">
         <p>01</p>
         <h3>Mi sitio web personal</h3>
         <p>Sitio web multipágina y bilingüe desarrollado para presentar mi formación, intereses, aficiones y proyectos, con HTML semántico, CSS adaptable y JavaScript para el buscador y el formulario de contacto.</p>
@@ -101,7 +102,7 @@
           <li>Diseño adaptable</li>
         </ul>
       </article>
-      <article id="proyecto-wasm">
+      <article id="proyecto-wasm" data-re-aoi-name="proyecto-wasm">
         <p>02</p>
         <h3>Experimentos con WebAssembly</h3>
         <p>Prácticas orientadas a comprender el funcionamiento de WebAssembly y su integración con aplicaciones web mediante JavaScript.</p>
@@ -111,7 +112,7 @@
           <li>Archivos WAT</li>
         </ul>
       </article>
-      <article id="proyecto-unity">
+      <article id="proyecto-unity" data-re-aoi-name="proyecto-unity">
         <p>03</p>
         <h3>Videojuegos con Unity</h3>
         <p>Desarrollo de videojuegos y prototipos interactivos utilizando Unity y C#, trabajando en la programación de comportamientos, mecánicas y elementos interactivos.</p>
@@ -121,7 +122,7 @@
           <li>Diseño de mecánicas</li>
         </ul>
       </article>
-      <article id="proyecto-vr">
+      <article id="proyecto-vr" data-re-aoi-name="proyecto-vr">
         <p>04</p>
         <h3>Gemelos digitales en realidad virtual</h3>
         <p>Desarrollo de entornos virtuales que representan espacios u objetos reales, permitiendo su exploración e interacción mediante tecnologías de realidad virtual.</p>
@@ -132,7 +133,7 @@
         </ul>
       </article>
     </section>
-    <section id="tecnologias" aria-labelledby="titulo-tecnologias">
+    <section id="tecnologias" data-re-aoi-name="tecnologias" aria-labelledby="titulo-tecnologias">
       <h2 id="titulo-tecnologias">Tecnologías</h2>
       <p>Estas son algunas de las tecnologías y herramientas que he utilizado durante mi formación y en los diferentes proyectos en los que he trabajado.</p>
       <dl>
@@ -180,7 +181,7 @@
     </section>
   </main>
 
-  <footer>
+  <footer data-re-aoi-name="pie">
     <div>
       <h2>David Alvarez Diaz</h2>
       <p>Ingeniero de software y estudiante del Máster en Ingeniería Web en la Universidad de Oviedo.</p>

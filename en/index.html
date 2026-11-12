@@ -13,6 +13,7 @@
   <link rel="alternate" hreflang="es" href="../index.html">
   <link rel="stylesheet" href="../css/base.css?v=20261112">
   <link rel="stylesheet" href="../css/inicio.css?v=20261112">
+  <script type="module" src="../js/realeye.js?v=20261112"></script>
   <script src="../js/main.js?v=20261112" defer></script>
   <script>
     (function(c,l,a,r,i,t,y){
@@ -24,10 +25,10 @@
 </head>
 <body>
   <a href="#contenido">Skip to content</a>
-  <header>
+  <header data-re-aoi-name="cabecera">
     <a href="index.html" title="Go to the home page">David.</a>
     <button type="button" aria-expanded="false" aria-controls="menu" hidden><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu</button>
-    <nav id="menu" aria-label="Main navigation">
+    <nav id="menu" data-re-aoi-name="menu-principal" aria-label="Main navigation">
       <a href="index.html" aria-current="page">Home</a>
       <a href="sobre-mi.html">About me</a>
       <a href="japon.html">Travel</a>
@@ -36,7 +37,7 @@
       <a href="contacto.html">Contact</a>
     </nav>
     <div>
-      <form role="search" action="buscar.html" method="get">
+      <form role="search" action="buscar.html" method="get" data-re-aoi-name="buscador-cabecera">
         <label for="buscador">Search the site</label>
         <input type="search" id="buscador" name="q" placeholder="Search the site…" autocomplete="off" title="Type to see suggestions. Keyboard shortcut: /">
         <button type="submit" aria-label="Search" title="Search"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
@@ -47,7 +48,7 @@
   </header>
 
   <main id="contenido">
-    <section>
+    <section data-re-aoi-name="portada">
       <p>Personal notebook · 2026</p>
       <h1>Ideas, trips and songs that stay with me.</h1>
       <p>A small space to share who I am, the places I want to visit and the music I keep coming back to.</p>
@@ -57,43 +58,43 @@
       </ul>
     </section>
 
-    <section aria-labelledby="titulo-temas">
+    <section aria-labelledby="titulo-temas" data-re-aoi-name="temas">
       <header>
         <p>My topics</p>
         <h2 id="titulo-temas">Six windows into my world</h2>
       </header>
       <section aria-label="Blog topics">
-        <article>
+        <article data-re-aoi-name="about-me">
           <p>01</p>
           <h3>About me</h3>
           <p>A short introduction, my interests and the things I enjoy learning.</p>
           <a href="sobre-mi.html">Read the story ↗</a>
         </article>
-        <article>
+        <article data-re-aoi-name="a-trip-to-japan">
           <p>02</p>
           <h3>A trip to Japan</h3>
           <p>Temples, trains, food and a culture I would love to discover up close.</p>
           <a href="japon.html">Open the destination ↗</a>
         </article>
-        <article>
+        <article data-re-aoi-name="my-soundtrack">
           <p>03</p>
           <h3>My soundtrack</h3>
           <p>Classic rock, old records and recommendations to listen to without hurry.</p>
           <a href="musica.html">Listen to the selection ↗</a>
         </article>
-        <article>
+        <article data-re-aoi-name="my-sport">
           <p>04</p>
           <h3>My sport</h3>
           <p>Archery is a way to have fun, focus and keep learning.</p>
           <a href="sobre-mi.html#deporte">See my interests ↗</a>
         </article>
-        <article>
+        <article data-re-aoi-name="my-games">
           <p>05</p>
           <h3>My games</h3>
           <p>Overwatch, Valorant and matches to share with friends.</p>
           <a href="sobre-mi.html#juegos">See my games ↗</a>
         </article>
-        <article>
+        <article data-re-aoi-name="education-and-projects">
           <p>06</p>
           <h3>Education and projects</h3>
           <p>A selection of the work and internships I have been developing.</p>
@@ -102,7 +103,7 @@
       </section>
     </section>
 
-    <section aria-labelledby="titulo-hablamos">
+    <section aria-labelledby="titulo-hablamos" data-re-aoi-name="contacto-portada">
       <p>Contact</p>
       <h2 id="titulo-hablamos">Shall we talk?</h2>
       <p>If you want to propose a project, ask for references or simply recommend me a record, write to me.</p>
@@ -113,7 +114,7 @@
     </section>
   </main>
 
-  <footer>
+  <footer data-re-aoi-name="pie">
     <div>
       <h2>David Alvarez Diaz</h2>
       <p>Software engineer and Master in Web Engineering student at the University of Oviedo.</p>

@@ -13,6 +13,7 @@
   <link rel="alternate" hreflang="en" href="en/japon.html">
   <link rel="stylesheet" href="css/base.css?v=20261112">
   <link rel="stylesheet" href="css/japon.css?v=20261112">
+  <script type="module" src="js/realeye.js?v=20261112"></script>
   <script src="js/main.js?v=20261112" defer></script>
   <script>
     (function(c,l,a,r,i,t,y){
@@ -24,10 +25,10 @@
 </head>
 <body>
   <a href="#contenido">Saltar al contenido</a>
-  <header>
+  <header data-re-aoi-name="cabecera">
     <a href="index.html" title="Ir a la portada">David.</a>
     <button type="button" aria-expanded="false" aria-controls="menu" hidden><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menú</button>
-    <nav id="menu" aria-label="Navegación principal">
+    <nav id="menu" data-re-aoi-name="menu-principal" aria-label="Navegación principal">
       <a href="index.html">Inicio</a>
       <a href="sobre-mi.html">Sobre mí</a>
       <a href="japon.html" aria-current="page">Viajes</a>
@@ -36,7 +37,7 @@
       <a href="contacto.html">Contacto</a>
     </nav>
     <div>
-      <form role="search" action="buscar.html" method="get">
+      <form role="search" action="buscar.html" method="get" data-re-aoi-name="buscador-cabecera">
         <label for="buscador">Buscar en el sitio</label>
         <input type="search" id="buscador" name="q" placeholder="Buscar en el sitio…" autocomplete="off" title="Escribe para ver sugerencias. Atajo de teclado: /">
         <button type="submit" aria-label="Buscar" title="Buscar"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
@@ -47,7 +48,7 @@
   </header>
 
   <main id="contenido">
-    <nav aria-label="Migas de pan">
+    <nav aria-label="Migas de pan" data-re-aoi-name="migas">
       <ol>
         <li><a href="index.html">Inicio</a></li>
         <li><a href="japon.html" aria-current="page">Viajes: Japón</a></li>
@@ -72,7 +73,7 @@
       </picture>
       <figcaption>Me gustaría perderme por las calles de Kioto y descubrir sus contrastes.</figcaption>
     </figure>
-    <section id="por-que-japon" aria-labelledby="titulo-por-que">
+    <section id="por-que-japon" data-re-aoi-name="por-que-japon" aria-labelledby="titulo-por-que">
       <h2 id="titulo-por-que">¿Por qué Japón?</h2>
       <p>Lo que más me atrae de Japón es el contraste entre la vida urbana y lo tradicional. En una misma ciudad pueden convivir grandes avenidas, pantallas y trenes llenos de gente con templos, jardines y barrios que conservan una calma completamente diferente.</p>
       <p>También me interesa descubrir una cultura tan distinta a la que conozco en Europa: sus costumbres, su gastronomía, la importancia que da a ciertos rituales y la manera en la que organiza la vida cotidiana. Me gustaría conocer esas diferencias con respeto y vivirlas más allá de las imágenes que vemos desde lejos.</p>
@@ -81,7 +82,7 @@
       <p>También soy un apasionado de los coches japoneses. Me interesa su diseño, la precisión mecánica y la relación que tienen con la competición, la personalización y la cultura popular.</p>
       <p>Me gustaría descubrir esa parte de Japón de cerca: desde los deportivos clásicos hasta los talleres y encuentros donde la ingeniería se convierte en una forma de expresión.</p>
     </section>
-    <section id="postales" aria-labelledby="titulo-postales">
+    <section id="postales" data-re-aoi-name="postales" aria-labelledby="titulo-postales">
       <h2 id="titulo-postales">Postales que quiero conocer</h2>
       <figure>
         <picture>
@@ -114,7 +115,7 @@
         <figcaption>Tokio y la energía de sus barrios urbanos. <a href="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf" target="_blank" rel="noopener noreferrer">Foto en Unsplash</a>.</figcaption>
       </figure>
     </section>
-    <section id="video" aria-labelledby="titulo-video">
+    <section id="video" data-re-aoi-name="video" aria-labelledby="titulo-video">
       <h2 id="titulo-video">Una ciudad que quiero conocer</h2>
       <figure>
         <video controls preload="metadata" playsinline width="640" height="360" poster="imagen/kyoto_poster.jpeg">
@@ -126,7 +127,7 @@
     </section>
   </main>
 
-  <footer>
+  <footer data-re-aoi-name="pie">
     <div>
       <h2>David Alvarez Diaz</h2>
       <p>Ingeniero de software y estudiante del Máster en Ingeniería Web en la Universidad de Oviedo.</p>
