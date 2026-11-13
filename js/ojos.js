@@ -123,7 +123,10 @@
     '[data-ojos="panel"] button{margin:.5rem .4rem 0 0;padding:.4rem .7rem;border:1px solid #1c5c4c;border-radius:.4rem;background:#fff;color:#1c5c4c;font:inherit;cursor:pointer}',
     '[data-ojos="panel"] button[aria-pressed="true"]{background:#1c5c4c;color:#fff}',
     '[data-ojos="mostrar"]{position:fixed;right:1rem;bottom:1rem;z-index:2147483000;padding:.5rem .8rem;border:0;border-radius:.5rem;background:#1c5c4c;color:#fff;font:14px system-ui,sans-serif;cursor:pointer}',
-    '#webgazerVideoContainer{z-index:2147483001!important}'
+    /* La camara va en el hueco entre las dos filas inferiores de puntos y el
+       texto entre las dos superiores, para no tapar ningun punto. */
+    '#webgazerVideoContainer{z-index:2147483001!important;top:71%!important;left:50%!important;transform:translate(-50%,-50%)}',
+    '[data-ojos="aviso"]{top:29%;transform:translate(-50%,-50%)}'
   ].join('');
   document.head.appendChild(estilos);
 
@@ -193,6 +196,8 @@
   function iniciar(webgazer, calibrando) {
     webgazer.params.faceMeshSolutionPath = MODELO;
     webgazer.params.saveDataAcrossSessions = true;
+    webgazer.params.videoViewerWidth = 240;
+    webgazer.params.videoViewerHeight = 180;
     return webgazer
       .setRegression('ridge')
       .setGazeListener(alMirar)
