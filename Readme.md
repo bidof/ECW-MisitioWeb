@@ -36,7 +36,7 @@ fecha de ultima actualizacion del pie. Necesita servirse desde un servidor web
 (GitHub Pages o uno local): abierto como archivo, el navegador bloquea fetch().
 
 PRUEBAS DE USABILIDAD (solo rama tanda2)
-Hotjar registra los clics, toques y grabaciones de cada sesion.
+Mouseflow registra los clics, toques y grabaciones de cada sesion.
 El seguimiento de ojos esta en js/ojos.js y usa la biblioteca WebGazer.js
 (Universidad de Brown), que estima la mirada con la webcam. Solo se activa a
 peticion del evaluador; los visitantes normales no descargan nada:
