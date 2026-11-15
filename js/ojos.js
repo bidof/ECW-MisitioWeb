@@ -179,9 +179,35 @@
     registro.puntos.push([Math.round(dato.x + window.scrollX), Math.round(dato.y + window.scrollY), ahora]);
   }
 
+  /* Al salir de la pagina se guarda y se apaga la camara: si se deja
+     encendida, el navegador tarda en soltarla y la pagina siguiente se queda
+     cargando hasta que puede volver a usarla. */
+  var camaraApagada = false;
+  function apagarCamara() {
+    if (camaraApagada) { return; }
+    camaraApagada = true;
+    try { if (window.webgazer) { window.webgazer.pause(); } } catch (e) { /* sin webgazer */ }
+    Array.prototype.forEach.call(document.querySelectorAll('video'), function (video) {
+      if (video.srcObject && video.srcObject.getTracks) {
+        video.srcObject.getTracks().forEach(function (pista) { pista.stop(); });
+      }
+    });
+  }
+  function salir() { guardar(); apagarCamara(); }
+
   window.setInterval(function () { if (grabando) { guardar(); } }, 2000);
-  window.addEventListener('pagehide', guardar);
+  window.addEventListener('pagehide', salir);
+  window.addEventListener('beforeunload', salir);
   document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') { guardar(); } });
+
+  /* Enlaces internos: se apaga la camara antes de cambiar de pagina. */
+  document.addEventListener('click', function (evento) {
+    var enlace = evento.target.closest && evento.target.closest('a[href]');
+    if (!enlace || enlace.target === '_blank' || evento.defaultPrevented) { return; }
+    if (evento.metaKey || evento.ctrlKey || evento.shiftKey || evento.button !== 0) { return; }
+    var destino = new URL(enlace.href, window.location.href);
+    if (destino.origin === window.location.origin && destino.pathname !== window.location.pathname) { salir(); }
+  });
 
   function cargarLibreria() {
     return new Promise(function (resolver, rechazar) {
@@ -210,10 +236,18 @@
 
   cuandoCargue(function () {
     if (estado === 'grabando') {
-      cargarLibreria()
-        .then(function (webgazer) { return iniciar(webgazer, false); })
-        .then(empezarRegistro)
-        .catch(function (error) { console.warn('Seguimiento de ojos no disponible', error); });
+      /* La camara y el modelo facial son pesados: se arrancan cuando la
+         pagina ya se ha cargado y pintado, para que el usuario no la vea
+         bloqueada al cambiar de pagina. */
+      var arrancar = function () {
+        window.setTimeout(function () {
+          cargarLibreria()
+            .then(function (webgazer) { return iniciar(webgazer, false); })
+            .then(empezarRegistro)
+            .catch(function (error) { console.warn('Seguimiento de ojos no disponible', error); });
+        }, 300);
+      };
+      if (document.readyState === 'complete') { arrancar(); } else { window.addEventListener('load', arrancar); }
       return;
     }
     calibrar();
