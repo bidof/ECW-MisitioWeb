@@ -258,6 +258,26 @@ form[role="search"] {
 }
 
 /* El foco se indica en toda la caja del buscador. */
+/* Version 3: el buscador de la cabecera es mas grande y tiene borde de color.
+   En las pruebas de la tanda 2 ningun usuario lo uso y una usuaria lo vio
+   tarde, despues de recorrer el menu. */
+body > header form[role="search"] {
+  height: 2.9rem;
+  padding-left: 1.1rem;
+  border: 2px solid var(--color-verde);
+  box-shadow: var(--sombra);
+}
+
+body > header form[role="search"] input {
+  width: 15rem;
+  font-size: 1rem;
+}
+
+body > header form[role="search"] > button {
+  width: 2.3rem;
+  height: 2.3rem;
+}
+
 form[role="search"]:focus-within {
   border-color: var(--color-verde);
   box-shadow: 0 0 0 4px var(--color-menta);
@@ -663,7 +683,8 @@ main > header > h1 + p {
     flex: 1;
   }
 
-  form[role="search"] input {
+  form[role="search"] input,
+  body > header form[role="search"] input {
     width: auto;
   }
 
