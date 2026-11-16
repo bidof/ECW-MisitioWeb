@@ -35,7 +35,15 @@ erratas. El indice se guarda en sessionStorage y se regenera cuando cambia la
 fecha de ultima actualizacion del pie. Necesita servirse desde un servidor web
 (GitHub Pages o uno local): abierto como archivo, el navegador bloquea fetch().
 
-PRUEBAS DE USABILIDAD (solo rama tanda2)
+VERSION 3: MEJORAS A PARTIR DE LAS PRUEBAS DE LA TANDA 2
+- Buscador destacado en la portada (grande, centrado, con ejemplo y
+  busquedas populares): ninguno de los usuarios uso el de la cabecera.
+- El menu dice «Formacion y experiencia»: dos usuarios no asociaron
+  «Formacion» con la experiencia laboral.
+- Sobre mi enlaza la experiencia laboral (proyectos.html#experiencia).
+- El buscador entiende sinonimos (trabajo, empresa, empleo, practicas...).
+
+PRUEBAS DE USABILIDAD
 Mouseflow registra los clics, toques y grabaciones de cada sesion.
 El seguimiento de ojos esta en js/ojos.js y usa la biblioteca WebGazer.js
 (Universidad de Brown), que estima la mirada con la webcam. Solo se activa a

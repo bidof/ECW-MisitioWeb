@@ -61,6 +61,123 @@ main > section:first-child {
   }
 }
 
+/* =============================================
+   PORTADA: BUSCADOR DESTACADO
+   Mejora de la tanda 2: ningun usuario uso el buscador de la cabecera,
+   asi que en la portada se ofrece uno grande, centrado y con ejemplos.
+   ============================================= */
+main > section:first-child > search {
+  display: block;
+  max-width: 820px;
+  margin: clamp(2.5rem, 6vw, 4rem) auto 0;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: var(--radio);
+  background-color: var(--color-menta);
+  color: var(--color-texto);
+  text-align: center;
+  box-shadow: var(--sombra);
+
+  & > h2 {
+    margin: 0 0 0.5rem;
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+  }
+
+  & label {
+    display: block;
+    flex-basis: 100%;
+    margin-bottom: 0.25rem;
+    color: var(--color-texto-suave);
+    background-color: inherit;
+  }
+
+  & form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  & input {
+    flex: 1;
+    min-width: 0;
+    padding: 1rem 1.25rem;
+    border: 2px solid var(--color-verde);
+    border-radius: 999px;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font: inherit;
+    font-size: 1.15rem;
+  }
+
+  & input:focus-visible {
+    outline: 3px solid var(--color-acento);
+    outline-offset: 2px;
+  }
+
+  & button {
+    padding: 1rem 1.6rem;
+    border: 2px solid var(--color-verde);
+    border-radius: 999px;
+    background-color: var(--color-verde);
+    color: var(--color-boton-texto);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color var(--transicion), border-color var(--transicion);
+  }
+
+  & button:hover {
+    border-color: transparent;
+    background-color: var(--color-acento);
+    color: var(--color-boton-texto);
+  }
+
+  & > p {
+    margin: var(--espacio-grande) 0 0.5rem;
+    color: var(--color-texto-suave);
+    background-color: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  & > ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  & > ul a {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--color-verde);
+    border-radius: 999px;
+    background-color: var(--color-fondo);
+    color: var(--color-verde);
+    font-size: 0.95rem;
+    text-decoration: none;
+  }
+
+  & > ul a:hover {
+    background-color: var(--color-verde);
+    color: var(--color-boton-texto);
+  }
+}
+
+@media (max-width: 560px) {
+  main > section:first-child > search button {
+    flex-basis: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
 main > section:first-child > p:first-child,
 main > section:nth-child(2) > header > p:first-child,
 main > section:nth-child(2) > section > article > p:first-child,

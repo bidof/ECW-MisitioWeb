@@ -406,6 +406,27 @@
     return puntos;
   }
 
+  /* Sinonimos: palabras que usa la gente y que no aparecen tal cual en el sitio.
+     Mejora de la tanda 2: los usuarios buscaban la experiencia laboral sin
+     saber que estaba en Formacion. */
+  var SINONIMOS = {
+    trabajo: ['experiencia', 'ntt'], trabaje: ['experiencia', 'ntt'], trabajado: ['experiencia', 'ntt'],
+    empresa: ['experiencia', 'ntt'], empleo: ['experiencia', 'ntt'], laboral: ['experiencia'],
+    practicas: ['experiencia'], curriculum: ['experiencia', 'formacion'], cv: ['experiencia', 'formacion'],
+    estudios: ['formacion', 'grado', 'master'], carrera: ['formacion', 'grado'], universidad: ['formacion'],
+    work: ['experience', 'ntt'], job: ['experience', 'ntt'], company: ['experience', 'ntt'],
+    employer: ['experience', 'ntt'], internship: ['experience'], studies: ['education', 'degree', 'master'],
+    resume: ['experience', 'education']
+  };
+
+  function puntuarConSinonimos(entrada, termino) {
+    var mejor = puntuar(entrada, termino);
+    (SINONIMOS[termino] || []).forEach(function (sinonimo) {
+      mejor = Math.max(mejor, puntuar(entrada, sinonimo) * 0.9);
+    });
+    return mejor;
+  }
+
   function buscar(indice, consulta) {
     var terminos = palabras(consulta);
     if (!terminos.length) { return { terminos: [], lista: [], parcial: false }; }
@@ -416,7 +437,7 @@
       var total = 0;
       var aciertos = 0;
       terminos.forEach(function (termino) {
-        var p = puntuar(entrada, termino);
+        var p = puntuarConSinonimos(entrada, termino);
         if (p) { aciertos += 1; total += p; }
       });
       if (total) {
