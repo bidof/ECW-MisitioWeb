@@ -25,6 +25,7 @@
       },
       parcial: 'No hay resultados con todas las palabras; se muestran coincidencias parciales.',
       vacio: 'Escribe al menos dos letras para buscar.',
+      escribe: 'Escribe qué quieres buscar, por ejemplo «experiencia».',
       cargando: 'Buscando en todas las páginas del sitio…',
       errorIndice: 'No se ha podido leer el contenido del sitio. Si lo has abierto como archivo local, usa un servidor web; mientras tanto puedes consultar el mapa del sitio.',
       revisadas: function (n) { return ' en ' + n + ' páginas revisadas.'; },
@@ -65,6 +66,7 @@
       },
       parcial: 'No results contain every word; showing partial matches.',
       vacio: 'Type at least two letters to search.',
+      escribe: 'Type what you are looking for, for example “experience”.',
       cargando: 'Searching every page of the site…',
       errorIndice: 'The site content could not be read. If you opened it as a local file, please use a web server; meanwhile you can check the site map.',
       revisadas: function (n) { return ' across ' + n + ' pages checked.'; },
@@ -461,8 +463,11 @@
 
     var completas = puntuadas.filter(function (r) { return r.aciertos === terminos.length; });
     var parcial = completas.length === 0 && puntuadas.length > 0;
+    /* La portada resume todo el sitio y coincide con casi cualquier busqueda:
+       se muestra siempre al final para dar prioridad a las paginas concretas. */
+    function esPortada(r) { return /\/index\.html(#|$)/.test(r.entrada.u) ? 1 : 0; }
     var lista = (parcial ? puntuadas : completas).sort(function (a, b) {
-      return b.aciertos - a.aciertos || b.total - a.total;
+      return esPortada(a) - esPortada(b) || b.aciertos - a.aciertos || b.total - a.total;
     });
     return { terminos: terminos, lista: lista, parcial: parcial };
   }
@@ -784,6 +789,38 @@
     } else if (evento.key === 'Escape' && cerrarMenu()) {
       botonMenu.focus();
     }
+  });
+
+  /* ---------------------------------------------------------------
+     Respuesta visual (feedback)
+     --------------------------------------------------------------- */
+  /* Buscar sin escribir nada no hace nada: en su lugar se avisa y se marca el campo. */
+  document.querySelectorAll('form[action$="buscar.html"]').forEach(function (form) {
+    var campo = form.querySelector('input[type="search"]');
+    if (!campo) { return; }
+    form.addEventListener('submit', function (evento) {
+      if (campo.value.trim()) { return; }
+      evento.preventDefault();
+      form.setAttribute('data-vacio', '');
+      avisar(T.escribe);
+      campo.focus();
+    });
+    campo.addEventListener('input', function () { form.removeAttribute('data-vacio'); });
+  });
+
+  /* Barra de carga al ir a otra pagina del sitio. */
+  document.addEventListener('click', function (evento) {
+    var enlace = evento.target.closest && evento.target.closest('a[href]');
+    if (!enlace || evento.defaultPrevented || evento.button !== 0 || evento.ctrlKey || evento.metaKey ||
+      evento.shiftKey || evento.altKey || enlace.target === '_blank' || enlace.hasAttribute('download')) { return; }
+    var destino = new URL(enlace.href, window.location.href);
+    if (destino.origin !== window.location.origin || /^(mailto|tel):/.test(enlace.href)) { return; }
+    if (destino.pathname === window.location.pathname && destino.search === window.location.search) { return; }
+    document.documentElement.setAttribute('data-cargando', '');
+  });
+  /* Al volver atras el navegador puede restaurar la pagina: se quita la barra. */
+  window.addEventListener('pageshow', function () {
+    document.documentElement.removeAttribute('data-cargando');
   });
 
   /* ---------------------------------------------------------------

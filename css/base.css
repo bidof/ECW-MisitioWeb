@@ -179,10 +179,23 @@ body > header nav {
 }
 
 body > header nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   padding: 0.4rem 0.8rem;
   border-radius: 999px;
   text-decoration: none;
-  transition: background-color var(--transicion), color var(--transicion);
+  transition: background-color var(--transicion), color var(--transicion), transform var(--transicion);
+}
+
+/* Cada apartado del menu lleva un icono que ayuda a reconocerlo de un vistazo. */
+body > header nav a svg {
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+body > header nav a[aria-current="page"] svg {
+  opacity: 1;
 }
 
 body > header nav a:hover {
@@ -696,6 +709,52 @@ main > header > h1 + p {
     right: 1rem;
     bottom: 1rem;
   }
+}
+
+/* --- Respuesta visual (feedback) a las acciones del usuario --- */
+
+/* Al pulsar, botones y enlaces del menu se hunden un poco: confirma que se ha pulsado. */
+body > header nav a:active,
+body > header > div > a:active,
+body > header > div > button:active,
+button:active {
+  transform: scale(0.96);
+}
+
+/* Barra de carga al cambiar de pagina: indica que el clic ha funcionado. */
+html[data-cargando]::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 4px;
+  background-color: var(--color-acento);
+  transform-origin: left;
+  animation: cargando 1.2s ease-out forwards;
+}
+
+@keyframes cargando {
+  from { transform: scaleX(0.05); }
+  to { transform: scaleX(0.85); }
+}
+
+/* Al llegar a un apartado desde el buscador o un enlace, se resalta un momento. */
+main :target {
+  animation: resaltar 2s ease-out;
+  scroll-margin-top: 1rem;
+}
+
+@keyframes resaltar {
+  0%, 30% { background-color: var(--color-menta); box-shadow: 0 0 0 0.5rem var(--color-menta); }
+  100% { background-color: transparent; box-shadow: 0 0 0 0.5rem transparent; }
+}
+
+/* Buscador vacio: el campo se marca para indicar que falta escribir algo. */
+form[data-vacio] input {
+  outline: 3px solid var(--color-acento);
+  outline-offset: 2px;
 }
 
 /* Evita animaciones para quien las desactiva en su sistema. */
