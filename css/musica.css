@@ -37,7 +37,8 @@ main > header + section > article {
     "disco titulo"
     "texto texto"
     "cancion cancion"
-    "audio audio";
+    "audio audio"
+    "alternativa alternativa";
   column-gap: var(--espacio-medio);
   align-content: start;
   padding: var(--espacio-grande);
@@ -110,6 +111,16 @@ main > header + section > article {
   & > audio {
     grid-area: audio;
     width: 100%;
+  }
+
+  /* Alternativa en texto del audio (WCAG 1.2.1): ocupa todo el ancho de la tarjeta. */
+  & > .alternativa-audio {
+    grid-area: alternativa;
+    margin: var(--espacio-pequeno) 0 0;
+    color: var(--color-texto-suave);
+    background-color: inherit;
+    font-size: 0.85rem;
+    line-height: 1.5;
   }
 }
 
