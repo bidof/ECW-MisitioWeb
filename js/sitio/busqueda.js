@@ -1,6 +1,24 @@
 /*
- * Logica de busqueda: puntuacion, sinonimos, correccion de erratas,
- * fragmentos de texto y resaltado de las palabras buscadas.
+ * ===================================================================
+ * BUSCADOR (2/3) · LOGICA DE BUSQUEDA
+ * ===================================================================
+ * Recibe el indice creado por indice.js y una consulta, y decide que
+ * entradas coinciden y en que orden se muestran. No toca la pagina,
+ * salvo resaltar(), que escribe el texto con las coincidencias marcadas.
+ *
+ * Como se ordenan los resultados:
+ *   - Cada termino de la consulta suma puntos en cada entrada: mas si
+ *     aparece en el titulo, sobre todo al inicio de una palabra, y menos
+ *     si solo aparece en el texto (ver puntuar()).
+ *   - Se tienen en cuenta sinonimos de las palabras que usa la gente y no
+ *     aparecen en el sitio, como «trabajo» para «experiencia» (tanda 2).
+ *   - Primero van las entradas que contienen todos los terminos; si
+ *     ninguna los contiene todos, se muestran las coincidencias parciales.
+ *   - La portada va siempre al final porque coincide con casi todo.
+ *   - Si no hay resultados, se propone una correccion de erratas.
+ *
+ * Exporta: Sitio.busqueda.buscar(), sugerirCorreccion(), fragmento(),
+ * resaltar() y paginaBuscador(). Lo usa buscador.js.
  */
 (function (Sitio) {
   'use strict';
@@ -10,10 +28,22 @@
   var palabras = Sitio.indice.palabras;
   var BASE = Sitio.indice.BASE;
 
+  /** Escapa los caracteres especiales para usar un texto dentro de una expresion regular. */
   function escaparRegExp(texto) {
     return texto.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
 
+  /**
+   * Puntua cuanto encaja un termino en una entrada del indice.
+   *   - En el titulo: 12 puntos si empieza una palabra («japon» en «Japón»)
+   *     y 6 si esta dentro de otra palabra.
+   *   - En el nombre de la pagina: 2 puntos.
+   *   - En el texto: 1 punto por aparicion (maximo 5) y 3 mas si alguna
+   *     empieza una palabra.
+   * @param {Object} entrada   Entrada del indice con nt, np y nd normalizados.
+   * @param {string} termino   Termino ya normalizado.
+   * @returns {number}         0 si el termino no aparece.
+   */
   function puntuar(entrada, termino) {
     var inicioPalabra = new RegExp('(^|[^a-z0-9])' + escaparRegExp(termino));
     var puntos = 0;
@@ -27,8 +57,8 @@
   }
 
   /* Sinonimos: palabras que usa la gente y que no aparecen tal cual en el sitio.
-     Mejora de la tanda 2: los usuarios buscaban la experiencia laboral sin
-     saber que estaba en Formacion. */
+     Mejora de la tanda 2: los usuarios buscaban la experiencia laboral
+     («donde trabajo») sin saber que estaba en Formacion. */
   var SINONIMOS = {
     trabajo: ['experiencia', 'ntt'], trabaje: ['experiencia', 'ntt'], trabajado: ['experiencia', 'ntt'],
     empresa: ['experiencia', 'ntt'], empleo: ['experiencia', 'ntt'], laboral: ['experiencia'],
@@ -39,6 +69,10 @@
     resume: ['experience', 'education']
   };
 
+  /**
+   * Puntua un termino teniendo en cuenta sus sinonimos: se queda con la mejor
+   * puntuacion. Un sinonimo vale un 10 % menos que la palabra exacta.
+   */
   function puntuarConSinonimos(entrada, termino) {
     var mejor = puntuar(entrada, termino);
     (SINONIMOS[termino] || []).forEach(function (sinonimo) {
@@ -47,10 +81,21 @@
     return mejor;
   }
 
+  /**
+   * Busca una consulta en el indice y devuelve los resultados ordenados.
+   * @param {{entradas: Object[]}} indice  Indice preparado por indice.js.
+   * @param {string} consulta              Texto que escribe el usuario.
+   * @returns {{terminos: string[], lista: Object[], parcial: boolean}}
+   *   terminos: palabras buscadas (para resaltarlas);
+   *   lista: resultados {entrada, posicion, total, aciertos} ordenados;
+   *   parcial: true si ningun resultado contiene todos los terminos.
+   */
   function buscar(indice, consulta) {
     var terminos = palabras(consulta);
     if (!terminos.length) { return { terminos: [], lista: [], parcial: false }; }
 
+    /* 1. Puntuar cada entrada: «aciertos» cuenta cuantos terminos contiene
+          y «total» suma sus puntos. */
     var porPosicion = {};
     var puntuadas = [];
     indice.entradas.forEach(function (entrada, i) {
@@ -67,8 +112,8 @@
       }
     });
 
-    /* Si una seccion coincide igual de bien que la pagina o seccion que la contiene,
-       se muestra solo la mas concreta para no repetir resultados. */
+    /* 2. Quitar repeticiones: si una seccion coincide igual de bien que la
+          pagina o seccion que la contiene, se muestra solo la mas concreta. */
     puntuadas.forEach(function (r) {
       var padre = r.entrada.padre;
       while (padre >= 0) {
@@ -79,10 +124,13 @@
     });
     puntuadas = puntuadas.filter(function (r) { return !r.oculta; });
 
+    /* 3. Preferir las entradas con todos los terminos; si no hay ninguna,
+          se muestran las que tienen alguno (coincidencias parciales). */
     var completas = puntuadas.filter(function (r) { return r.aciertos === terminos.length; });
     var parcial = completas.length === 0 && puntuadas.length > 0;
-    /* La portada resume todo el sitio y coincide con casi cualquier busqueda:
-       se muestra siempre al final para dar prioridad a las paginas concretas. */
+
+    /* 4. Ordenar: la portada al final (resume todo el sitio y coincide con
+          casi cualquier busqueda), despues mas terminos y mas puntos primero. */
     function esPortada(r) { return /\/index\.html(#|$)/.test(r.entrada.u) ? 1 : 0; }
     var lista = (parcial ? puntuadas : completas).sort(function (a, b) {
       return esPortada(a) - esPortada(b) || b.aciertos - a.aciertos || b.total - a.total;
@@ -90,7 +138,14 @@
     return { terminos: terminos, lista: lista, parcial: parcial };
   }
 
-  /* Distancia de Levenshtein para sugerir correcciones de escritura. */
+  /**
+   * Distancia de Levenshtein: numero minimo de letras que hay que cambiar,
+   * anadir o quitar para pasar de una palabra a otra («japn» → «japon» = 1).
+   * Se calcula con programacion dinamica guardando solo una fila de la tabla.
+   * @param {string} a
+   * @param {string} b
+   * @returns {number}
+   */
   function distancia(a, b) {
     var fila = [];
     var i;
@@ -108,9 +163,16 @@
     return fila[b.length];
   }
 
+  /**
+   * Propone una consulta corregida cuando hay erratas: cada termino sin
+   * resultados se cambia por la palabra mas parecida del vocabulario del
+   * sitio (como maximo 1 cambio en palabras cortas y 2 en largas).
+   * @returns {?string}  Consulta corregida, o null si no hay nada que corregir.
+   */
   function sugerirCorreccion(indice, consulta) {
     var cambiado = false;
     var corregida = palabras(consulta).map(function (termino) {
+      /* Las palabras muy cortas o que ya dan resultados no se tocan. */
       if (termino.length < 4 || buscar(indice, termino).lista.length) { return termino; }
       var mejor = null;
       var mejorDistancia = termino.length > 6 ? 3 : 2;
@@ -124,7 +186,13 @@
     return cambiado ? corregida.join(' ') : null;
   }
 
-  /* Fragmento de unos 200 caracteres alrededor de la primera coincidencia. */
+  /**
+   * Fragmento de unos 200 caracteres del texto alrededor de la primera
+   * coincidencia, cortado por espacios y con «…» si se recorta.
+   * @param {string} texto     Texto completo de la entrada.
+   * @param {string[]} terminos
+   * @returns {string}
+   */
   function fragmento(texto, terminos) {
     var normal = normalizar(texto);
     var primera = -1;
@@ -133,18 +201,30 @@
       if (pos !== -1 && (primera === -1 || pos < primera)) { primera = pos; }
     });
     if (texto.length <= 200) { return texto; }
+    /* Se empieza unos 60 caracteres antes de la coincidencia, al inicio de una palabra. */
     var inicio = Math.max(0, primera - 60);
     if (inicio > 0) {
       var espacio = texto.indexOf(' ', inicio);
       inicio = espacio !== -1 && espacio < primera ? espacio + 1 : inicio;
     }
+    /* Y se termina 200 caracteres despues, en el ultimo espacio para no partir palabras. */
     var fin = Math.min(texto.length, inicio + 200);
     var corte = texto.lastIndexOf(' ', fin);
     if (fin < texto.length && corte > inicio + 120) { fin = corte; }
     return (inicio > 0 ? '… ' : '') + texto.slice(inicio, fin) + (fin < texto.length ? ' …' : '');
   }
 
-  /* Escribe un texto marcando con <mark> las palabras buscadas. */
+  /**
+   * Escribe un texto dentro de un elemento marcando con <mark> las palabras
+   * buscadas. Se busca sobre el texto normalizado (sin tildes) y un mapa de
+   * posiciones traduce cada coincidencia a su lugar en el texto original,
+   * para resaltar «Japón» aunque se haya buscado «japon».
+   * Se crean nodos de texto (no innerHTML), asi el contenido nunca se
+   * interpreta como HTML.
+   * @param {Element} destino
+   * @param {string} texto
+   * @param {string[]} terminos
+   */
   function resaltar(destino, texto, terminos) {
     var normal = '';
     var mapa = [];
@@ -153,6 +233,7 @@
       var n = normalizar(texto[i]);
       for (var j = 0; j < n.length; j += 1) { normal += n[j]; mapa.push(i); }
     }
+    /* Todas las apariciones de cada termino, como pares [inicio, fin] en el texto original. */
     var marcas = [];
     terminos.forEach(function (termino) {
       var desde = 0;
@@ -163,6 +244,7 @@
         pos = normal.indexOf(termino, desde);
       }
     });
+    /* Se escriben en orden; si dos marcas se solapan, se ignora la segunda. */
     marcas.sort(function (a, b) { return a[0] - b[0]; });
     var cursor = 0;
     marcas.forEach(function (m) {
@@ -174,6 +256,11 @@
     destino.appendChild(document.createTextNode(texto.slice(cursor)));
   }
 
+  /**
+   * Direccion de la pagina del buscador del idioma actual con una consulta.
+   * @param {string} [consulta]
+   * @returns {string}
+   */
   function paginaBuscador(consulta) {
     return new URL('buscar.html', BASE).href + (consulta ? '?q=' + encodeURIComponent(consulta) : '');
   }
