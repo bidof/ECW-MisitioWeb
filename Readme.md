@@ -22,7 +22,19 @@ navegacion siguen funcionando. Aporta el buscador interno con sugerencias,
 el menu plegable en movil, avisos emergentes de confirmacion,
 el boton para volver arriba, la validacion en linea del formulario de contacto
 y el control de los audios (solo suena uno a la vez y se marca el activo).
-No se usan bibliotecas: toda la logica esta en js/main.js.
+No se usan bibliotecas. El codigo esta dividido en un fichero por funcionalidad
+(js/sitio/) y js/main.js solo los arranca en orden:
+  nucleo.js      idioma de la pagina, textos de la interfaz y utilidades
+  avisos.js      aviso emergente accesible (elemento output)
+  menu.js        menu plegable en movil
+  navegacion.js  volver arriba, enlaces externos, barra de carga y atajos
+  indice.js      rastreo de las paginas para crear el indice del buscador
+  busqueda.js    logica de busqueda: puntuacion, sinonimos y erratas
+  buscador.js    interfaz del buscador: sugerencias y pagina de resultados
+  contacto.js    copiar el correo y formulario con validacion en linea
+  musica.js      solo suena un audio a la vez
+Son scripts clasicos que comparten el objeto window.Sitio (no modulos ES), asi
+que tambien funcionan si la web se abre como archivo, salvo el buscador.
 
 El buscador no usa un indice escrito a mano: cuando el usuario va a buscar,
 recorre el sitio empezando por la portada y el mapa del sitio, descarga cada
@@ -45,9 +57,17 @@ VERSION 3: MEJORAS A PARTIR DE LAS PRUEBAS DE LA TANDA 2
 
 PRUEBAS DE USABILIDAD
 Mouseflow registra los clics, toques y grabaciones de cada sesion.
-El seguimiento de ojos esta en js/ojos.js y usa la biblioteca WebGazer.js
-(Universidad de Brown), que estima la mirada con la webcam. Solo se activa a
-peticion del evaluador; los visitantes normales no descargan nada:
+El seguimiento de ojos es codigo propio (js/ojos/ y js/ojos.js) que usa la
+biblioteca WebGazer.js (Universidad de Brown), la cual estima la mirada con la
+webcam. El codigo propio carga la biblioteca, calibra, guarda la mirada por
+pagina y dibuja el mapa de calor y el recorrido:
+  ojos/comun.js        configuracion, textos, almacenamiento y estilos
+  ojos/registro.js     registro de la mirada, carga de WebGazer y camara
+  ojos/calibracion.js  calibracion con nueve puntos
+  ojos/mapa.js         visor del mapa de calor y del recorrido
+  ojos.js              decide que hacer segun el parametro ?ojos
+Solo se activa a peticion del evaluador; los visitantes normales no descargan
+la biblioteca:
   ?ojos=1    calibra (9 puntos, 5 pulsaciones cada uno) y empieza a registrar.
              El registro continua al cambiar de pagina en la misma pestana.
   ?ojos=ver  termina el registro y dibuja sobre la pagina el mapa de calor
@@ -87,7 +107,8 @@ HERRAMIENTAS Y DEPENDENCIAS
 ---------------------------
 
 El sitio no utiliza bibliotecas JavaScript ni frameworks; todo el
-JavaScript es propio. Se prefieren las
+JavaScript es propio. La unica excepcion es WebGazer.js, que solo se descarga
+durante las pruebas de seguimiento de ojos. Se prefieren las
 funciones nativas del navegador para reducir dependencias y facilitar el
 desarrollo.
 
