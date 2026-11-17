@@ -574,17 +574,26 @@
 
   if (formCabecera && !enPaginaBuscador) {
     var entrada = formCabecera.querySelector('input');
+    /* La lista solo se anade a la pagina cuando tiene contenido: asi no queda una lista
+       vacia en el codigo (TAW, WCAG 1.3.1 «presencia de listas vacias»). */
     var lista = crear('ul', { id: 'sugerencias', role: 'listbox', 'aria-label': entrada.placeholder });
     lista.hidden = true;
-    formCabecera.appendChild(lista);
     entrada.setAttribute('role', 'combobox');
     entrada.setAttribute('aria-autocomplete', 'list');
     entrada.setAttribute('aria-expanded', 'false');
-    entrada.setAttribute('aria-controls', 'sugerencias');
     var activa = -1;
+
+    var abrirLista = function () {
+      if (!lista.isConnected) { formCabecera.appendChild(lista); }
+      entrada.setAttribute('aria-controls', 'sugerencias');
+      lista.hidden = false;
+      entrada.setAttribute('aria-expanded', 'true');
+    };
 
     var cerrarSugerencias = function () {
       lista.hidden = true;
+      lista.remove();
+      entrada.removeAttribute('aria-controls');
       entrada.setAttribute('aria-expanded', 'false');
       entrada.removeAttribute('aria-activedescendant');
       activa = -1;
@@ -602,8 +611,7 @@
     var mostrarAviso = function (texto) {
       lista.textContent = '';
       lista.appendChild(crear('li', { role: 'presentation' }, texto));
-      lista.hidden = false;
-      entrada.setAttribute('aria-expanded', 'true');
+      abrirLista();
     };
 
     var pintarSugerencias = function () {
@@ -644,8 +652,7 @@
           }
           lista.appendChild(vacio);
         }
-        lista.hidden = false;
-        entrada.setAttribute('aria-expanded', 'true');
+        abrirLista();
       }, function () {
         mostrarAviso(T.errorIndice);
       });
