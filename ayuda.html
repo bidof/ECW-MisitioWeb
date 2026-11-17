@@ -11,8 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="alternate" hreflang="en" href="en/ayuda.html">
-  <link rel="stylesheet" href="css/base.css?v=20261116d">
-  <link rel="stylesheet" href="css/utilidades.css?v=20261116b">
+  <link rel="stylesheet" href="css/base.css?v=20261117f">
+  <link rel="stylesheet" href="css/utilidades.css?v=20261117f">
   <script>
     window._mfq = window._mfq || [];
     window.mouseflowExcludeSubDomains = true;
@@ -24,7 +24,7 @@
     })();
   </script>
   <script src="js/ojos.js?v=20261116b" defer></script>
-  <script src="js/main.js?v=20261116d" defer></script>
+  <script src="js/main.js?v=20261117e" defer></script>
 </head>
 <body>
   <a href="#contenido">Saltar al contenido</a>
@@ -70,6 +70,7 @@
         <li><a href="#atajos">Atajos de teclado</a></li>
         <li><a href="#accesibilidad">Accesibilidad</a></li>
         <li><a href="#preguntas">Preguntas frecuentes</a></li>
+        <li><a href="#glosario">Glosario</a></li>
         <li><a href="#cambios">Historial de cambios</a></li>
       </ul>
     </nav>
@@ -133,7 +134,11 @@
         <li>Los textos tienen un contraste mínimo de 7:1 con el fondo.</li>
         <li>Todas las imágenes, audios y vídeos tienen textos alternativos o descripciones.</li>
         <li>Si tu sistema pide reducir el movimiento, se desactivan las animaciones.</li>
-        <li>El enlace <strong>EN</strong> de la cabecera abre la misma página en inglés.</li>
+        <li>Los botones y enlaces que no están dentro de un texto miden al menos 44 × 44 píxeles, para pulsarlos fácilmente.</li>
+        <li>Los avisos no desaparecen solos: se quedan hasta que haces otra cosa.</li>
+        <li>Los enlaces que abren otra pestaña lo indican con el símbolo ↗.</li>
+        <li>Las palabras técnicas se explican en el <a href="#glosario">glosario</a> y las abreviaturas muestran su significado.</li>
+        <li>El enlace <strong><abbr title="English (inglés)">EN</abbr></strong> de la cabecera abre la misma página en inglés.</li>
       </ul>
     </section>
     <section id="preguntas" aria-labelledby="titulo-preguntas">
@@ -144,7 +149,7 @@
       </details>
       <details>
         <summary>¿El sitio está disponible en otros idiomas?</summary>
-        <p>Sí, todas las páginas están en español y en inglés. Usa el enlace «EN» o «ES» de la cabecera para cambiar de idioma sin perder la página en la que estás.</p>
+        <p>Sí, todas las páginas están en español y en inglés. Usa el enlace «<abbr title="English (inglés)">EN</abbr>» o «<abbr title="Español">ES</abbr>» de la cabecera para cambiar de idioma sin perder la página en la que estás.</p>
       </details>
       <details>
         <summary>No se oye ningún audio en la página de música, ¿qué hago?</summary>
@@ -159,9 +164,37 @@
         <p>Cada vez que hay novedades. La fecha de la última actualización aparece en el pie de todas las páginas y el detalle está en el historial de cambios.</p>
       </details>
     </section>
+    <section id="glosario" aria-labelledby="titulo-glosario">
+      <h2 id="titulo-glosario">Glosario</h2>
+      <p>Explicación sencilla de las palabras técnicas que aparecen en el sitio.</p>
+      <dl>
+        <dt>NTT DATA</dt>
+        <dd>Empresa de consultoría y servicios tecnológicos en la que trabajé seis meses como desarrollador de software.</dd>
+        <dt>Unity</dt>
+        <dd>Programa para crear videojuegos y aplicaciones en 2D, 3D y realidad virtual.</dd>
+        <dt>Realidad virtual (VR)</dt>
+        <dd>Tecnología que, con unas gafas especiales, te hace sentir dentro de un mundo creado por ordenador.</dd>
+        <dt>WebAssembly (WASM)</dt>
+        <dd>Formato que permite ejecutar en el navegador programas escritos en otros lenguajes, casi tan rápido como en el ordenador.</dd>
+        <dt>HTML, CSS y JavaScript</dt>
+        <dd>Los tres lenguajes de una página web: HTML ordena el contenido, CSS le da el aspecto y JavaScript añade la interacción.</dd>
+        <dt>Overwatch y Valorant</dt>
+        <dd>Videojuegos de disparos por equipos que juego con amigos.</dd>
+        <dt>Arquería</dt>
+        <dd>Tiro con arco: deporte en el que se lanzan flechas a una diana.</dd>
+        <dt>Torii</dt>
+        <dd>Puerta tradicional japonesa, normalmente roja, que marca la entrada a un santuario.</dd>
+        <dt>Buscador</dt>
+        <dd>Cuadro de texto para encontrar información escribiendo una palabra, como «experiencia».</dd>
+        <dt>Migas de pan</dt>
+        <dd>Línea bajo la cabecera que indica en qué página estás y cómo volver atrás.</dd>
+      </dl>
+    </section>
+
     <section id="cambios" aria-labelledby="titulo-cambios">
       <h2 id="titulo-cambios">Historial de cambios</h2>
       <ol reversed>
+        <li><time datetime="2026-11-17">17 de noviembre de 2026</time>: accesibilidad AAA: contraste de 7:1 también en los textos de ejemplo, botones y enlaces de al menos 44 × 44 píxeles, enlaces que se entienden por sí solos, subtítulos y descripción en texto del vídeo de Kioto, alternativa en texto de los audios, avisos sin límite de tiempo, aviso de los enlaces que abren otra pestaña, abreviaturas explicadas y glosario.</li>
         <li><time datetime="2026-11-16">16 de noviembre de 2026</time>: buscador destacado en la portada y más visible en la cabecera, búsquedas populares, el buscador entiende sinónimos (trabajo, empresa…), el apartado Formación pasa a llamarse «Formación y experiencia» y Sobre mí enlaza la experiencia laboral. Además, el menú tiene iconos y un enlace a Ayuda, la portada sale al final de los resultados del buscador y la web da más respuesta visual: barra de carga al cambiar de página, aviso si buscas sin escribir nada y resaltado del apartado al que llegas.</li>
         <li><time datetime="2026-11-10">10 de noviembre de 2026</time>: buscador con sugerencias, versión en inglés, migas de pan, mapa del sitio, página de contacto con formulario, referencias, página de ayuda y aficiones agrupadas.</li>
         <li><time datetime="2026-10-03">3 de octubre de 2026</time>: primera versión con cinco páginas: inicio, sobre mí, viajes, música y formación.</li>
@@ -174,8 +207,8 @@
     <div>
       <h2>David Alvarez Diaz</h2>
       <p>Ingeniero de software y estudiante del Máster en Ingeniería Web en la Universidad de Oviedo.</p>
-      <p>Última actualización: <time datetime="2026-11-16">16 de noviembre de 2026</time></p>
-      <p>© 2026 · uo283196 · HTML5, CSS y JavaScript</p>
+      <p>Última actualización: <time datetime="2026-11-17">17 de noviembre de 2026</time></p>
+      <p>© 2026 · uo283196 · <abbr title="HyperText Markup Language, versión 5">HTML5</abbr>, <abbr title="Cascading Style Sheets (hojas de estilo)">CSS</abbr> y JavaScript</p>
     </div>
     <nav aria-label="Enlaces del sitio">
       <h2>El sitio</h2>
@@ -188,7 +221,7 @@
       <h2>Contacto y redes</h2>
       <address>
         <a href="mailto:davor2205@gmail.com"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>davor2205@gmail.com</a>
-        <a href="https://github.com/bidof" target="_blank" rel="me noopener noreferrer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17.3 4.3 18.3 4.6 18.3 4.6c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>GitHub (bidof)</a>
+        <a href="https://github.com/bidof" target="_blank" rel="me noopener noreferrer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17.3 4.3 18.3 4.6 18.3 4.6c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>GitHub (bidof)<span class="oculto"> (se abre en una pestaña nueva)</span></a>
       </address>
     </div>
   </footer>

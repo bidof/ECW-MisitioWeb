@@ -6,7 +6,7 @@
   --color-texto: #182121;
   --color-texto-suave: #3b4542;
   --color-verde: #174b47;
-  --color-acento: #8a2e1d;
+  --color-acento: #842b1b;
   --color-menta: #d9eee8;
   --color-arena: #f7f2e9;
   --color-fondo: #fffdf8;
@@ -711,6 +711,85 @@ main > header > h1 + p {
   }
 }
 
+/* =============================================
+   ACCESIBILIDAD AAA
+   ============================================= */
+
+/* Texto solo para lectores de pantalla: completa el sentido de un enlace sin cambiar el diseno. */
+.oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* WCAG 3.2.5 (AAA): los enlaces que abren otra pestana lo indican tambien a la vista. */
+a[target="_blank"]::after {
+  content: " ↗" / "";
+}
+
+/* WCAG 1.4.6 (AAA): el texto de ejemplo de los campos tambien llega a 7:1. */
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-texto-suave);
+  opacity: 1;
+}
+
+/* WCAG 1.4.8 (AAA): lineas de 80 caracteres como maximo y separacion clara entre parrafos. */
+main p,
+main li,
+main dd {
+  max-width: 75ch;
+}
+
+main p {
+  margin-block-end: 1em;
+}
+
+/* WCAG 2.5.5 (AAA): los objetivos que no forman parte de un texto miden al menos 44 x 44 px.
+   Los enlaces dentro de un parrafo, un pie de figura o una celda quedan exentos por estar en el texto. */
+body > a:first-child,
+body > header a,
+body > header button,
+footer a,
+main a:not(p a, figcaption a, td a, label a),
+button,
+select,
+input:not([type="hidden"]) {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+}
+
+body > a:first-child,
+body > header > a:first-child,
+footer nav a,
+footer address a,
+main a:not(p a, figcaption a, td a, label a) {
+  display: inline-flex;
+  align-items: center;
+}
+
+body > header > div > a,
+body > header > div > button {
+  min-width: 2.75rem;
+  height: 2.75rem;
+}
+
+summary {
+  min-height: 2.75rem;
+  padding-block: 0.6rem;
+  box-sizing: border-box;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* El buscador de la cabecera crece para que el campo y su boton lleguen a 44 px. */
+body > header form[role="search"] {
+  height: 3.2rem;
+}
+
 /* --- Respuesta visual (feedback) a las acciones del usuario --- */
 
 /* Al pulsar, botones y enlaces del menu se hunden un poco: confirma que se ha pulsado. */
@@ -768,6 +847,12 @@ form[data-vacio] input {
   *::after {
     transition-duration: 0.01ms;
     animation-duration: 0.01ms;
+  }
+
+  /* Sin movimiento al pulsar ni al pasar el raton (WCAG 2.3.3, AAA). */
+  *:hover,
+  *:active {
+    transform: none !important;
   }
 }
 

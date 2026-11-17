@@ -118,13 +118,21 @@
   document.body.appendChild(aviso);
   var temporizadorAviso;
 
+  /* WCAG 2.2.3 (AAA): el aviso no desaparece por tiempo. Se queda hasta que el usuario
+     hace otra cosa (pulsar, tocar o usar el teclado), asi tiene todo el tiempo para leerlo. */
+  function ocultarAviso() {
+    aviso.setAttribute('data-visible', 'false');
+  }
+
   function avisar(mensaje) {
     window.clearTimeout(temporizadorAviso);
     aviso.textContent = mensaje;
     aviso.setAttribute('data-visible', 'true');
+    /* Se espera un momento para que el mismo clic que lo muestra no lo cierre. */
     temporizadorAviso = window.setTimeout(function () {
-      aviso.setAttribute('data-visible', 'false');
-    }, 3500);
+      document.addEventListener('pointerdown', ocultarAviso, { once: true });
+      document.addEventListener('keydown', ocultarAviso, { once: true });
+    }, 300);
   }
 
   /* ---------------------------------------------------------------

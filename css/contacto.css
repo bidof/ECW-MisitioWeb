@@ -112,6 +112,8 @@ main form {
   }
 
   & > p:first-child {
+    /* Es una frase normal: el asterisco no debe separarse en otra linea. */
+    display: block;
     color: var(--color-texto-suave);
     background-color: inherit;
     font-size: 0.9rem;
