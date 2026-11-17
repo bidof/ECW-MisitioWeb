@@ -171,14 +171,14 @@ body > header > a:first-child:hover {
   transform: rotate(-3deg) scale(1.05);
 }
 
-body > header nav {
+#menu {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
   font-size: 0.9rem;
 }
 
-body > header nav a {
+#menu a {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -189,22 +189,22 @@ body > header nav a {
 }
 
 /* Cada apartado del menu lleva un icono que ayuda a reconocerlo de un vistazo. */
-body > header nav a svg {
+#menu a svg {
   flex-shrink: 0;
   opacity: 0.8;
 }
 
-body > header nav a[aria-current="page"] svg {
+#menu a[aria-current="page"] svg {
   opacity: 1;
 }
 
-body > header nav a:hover {
+#menu a:hover {
   background-color: var(--color-arena);
   color: var(--color-acento);
 }
 
 /* La seccion actual se marca con un fondo y un subrayado bien visibles. */
-body > header nav a[aria-current="page"] {
+#menu a[aria-current="page"] {
   background-color: var(--color-menta);
   color: var(--color-verde);
   font-weight: 700;
@@ -217,15 +217,15 @@ body > header > button {
 }
 
 /* Herramientas: buscador, idioma y ayuda. */
-body > header > div {
+body > header > nav:not(#menu) {
   display: flex;
   align-items: center;
   gap: var(--espacio-pequeno);
   margin-left: auto;
 }
 
-body > header > div > a,
-body > header > div > button {
+body > header > nav:not(#menu) > a,
+body > header > nav:not(#menu) > button {
   display: inline-flex;
   min-width: 2.5rem;
   height: 2.5rem;
@@ -244,8 +244,8 @@ body > header > div > button {
   transition: border-color var(--transicion), color var(--transicion), transform var(--transicion);
 }
 
-body > header > div > a:hover,
-body > header > div > button:hover {
+body > header > nav:not(#menu) > a:hover,
+body > header > nav:not(#menu) > button:hover {
   border-color: var(--color-acento);
   color: var(--color-acento);
   transform: translateY(-1px);
@@ -253,7 +253,7 @@ body > header > div > button:hover {
 
 /* Buscador: el formulario hace de caja y el campo y el boton van dentro.
    La lista de sugerencias se posiciona respecto a las herramientas de la cabecera. */
-body > header > div {
+body > header > nav:not(#menu) {
   position: relative;
 }
 
@@ -672,22 +672,22 @@ main > header > h1 + p {
     cursor: pointer;
   }
 
-  body > header > button[aria-expanded="false"] + nav {
+  body > header > button[aria-expanded="false"] + #menu {
     display: none;
   }
 
-  body > header nav {
+  #menu {
     width: 100%;
     flex-direction: column;
     margin-left: 0;
     font-size: 1rem;
   }
 
-  body > header nav a {
+  #menu a {
     padding: 0.7rem 1rem;
   }
 
-  body > header > div {
+  body > header > nav:not(#menu) {
     width: 100%;
     margin-left: 0;
   }
@@ -771,8 +771,8 @@ main a:not(p a, figcaption a, td a, label a) {
   align-items: center;
 }
 
-body > header > div > a,
-body > header > div > button {
+body > header > nav:not(#menu) > a,
+body > header > nav:not(#menu) > button {
   min-width: 2.75rem;
   height: 2.75rem;
 }
@@ -793,9 +793,9 @@ body > header form[role="search"] {
 /* --- Respuesta visual (feedback) a las acciones del usuario --- */
 
 /* Al pulsar, botones y enlaces del menu se hunden un poco: confirma que se ha pulsado. */
-body > header nav a:active,
-body > header > div > a:active,
-body > header > div > button:active,
+#menu a:active,
+body > header > nav:not(#menu) > a:active,
+body > header > nav:not(#menu) > button:active,
 button:active {
   transform: scale(0.96);
 }
@@ -858,7 +858,7 @@ form[data-vacio] input {
 
 /* Al imprimir se ocultan los elementos de navegacion. */
 @media print {
-  body > header > div,
+  body > header > nav:not(#menu),
   body > header > button,
   body > button,
   main > nav:first-child {

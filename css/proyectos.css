@@ -114,23 +114,17 @@ main > header + section + section + section h2 {
 
 main > header + section + section + section dl {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0 2rem;
+  /* Cada termino y su descripcion forman una fila: dos parejas por fila en escritorio. */
+  grid-template-columns: 9rem 1fr 9rem 1fr;
+  gap: 0 0.8rem;
   margin: 0;
   border-top: 1px solid var(--color-linea);
 }
 
-main > header + section + section + section dl > div {
-  display: grid;
-  grid-template-columns: 9rem 1fr;
-  gap: 0.8rem;
+main > header + section + section + section dt,
+main > header + section + section + section dd {
   padding: 0.8rem 0;
   border-bottom: 1px solid var(--color-linea);
-  transition: background-color var(--transicion);
-}
-
-main > header + section + section + section dl > div:hover {
-  background-color: var(--color-arena);
 }
 
 main > header + section + section + section dt {
@@ -151,6 +145,6 @@ main > header + section + section + section dd {
   main > header + section,
   main > header + section + section,
   main > header + section + section + section dl {
-    grid-template-columns: 1fr;
+    grid-template-columns: 9rem 1fr;
   }
 }

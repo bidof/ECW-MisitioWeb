@@ -108,7 +108,7 @@
   /* ---------- estilos (solo cuando la herramienta esta activa) ---------- */
   var estilos = document.createElement('style');
   estilos.textContent = [
-    '[data-ojos="capa"]{position:fixed;inset:0;z-index:2147483000;background:rgb(255 255 255 / 0.94);color:#1c2222;font:16px/1.5 system-ui,sans-serif}',
+    '[data-ojos="capa"]{position:fixed;inset:0;width:auto;height:auto;max-width:none;max-height:none;margin:0;padding:0;border:0;z-index:2147483000;background:rgb(255 255 255 / 0.94);color:#1c2222;font:16px/1.5 system-ui,sans-serif}',
     '[data-ojos="aviso"]{position:absolute;left:50%;top:22%;transform:translateX(-50%);width:min(34rem,calc(100% - 7rem));text-align:center}',
     '[data-ojos="aviso"] h2{margin:0 0 .5rem;font-size:1.25rem}',
     '[data-ojos="aviso"] button{margin:.75rem .25rem 0;padding:.6rem 1.1rem;border:0;border-radius:.5rem;background:#1c5c4c;color:#fff;font:inherit;cursor:pointer}',
@@ -255,8 +255,9 @@
 
   /* ================== CALIBRACION ================== */
   function calibrar() {
-    var capa = crear('div', { 'data-ojos': 'capa', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'ojos-titulo' });
-    var aviso = crear('div', { 'data-ojos': 'aviso' });
+    /* Capa de calibracion: un dialog abierto que cubre la pagina, con el aviso en una seccion. */
+    var capa = crear('dialog', { 'data-ojos': 'capa', open: '', 'aria-modal': 'true', 'aria-labelledby': 'ojos-titulo' });
+    var aviso = crear('section', { 'data-ojos': 'aviso' });
     var titulo = crear('h2', { id: 'ojos-titulo' }, T.titulo);
     var texto = crear('p', { 'aria-live': 'polite' }, T.cargando);
     aviso.append(titulo, texto);

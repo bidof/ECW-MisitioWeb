@@ -114,7 +114,8 @@
   /* ---------------------------------------------------------------
      Aviso emergente (toast) con region viva para lectores de pantalla
      --------------------------------------------------------------- */
-  var aviso = crear('div', { role: 'status', 'aria-live': 'polite', 'data-visible': 'false' });
+  /* output es el elemento semantico para un resultado o mensaje de estado. */
+  var aviso = crear('output', { role: 'status', 'aria-live': 'polite', 'data-visible': 'false' });
   document.body.appendChild(aviso);
   var temporizadorAviso;
 
