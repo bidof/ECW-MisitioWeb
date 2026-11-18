@@ -5,14 +5,77 @@ TECNOLOGIAS
 -----------
 
 HTML5
-Se utiliza para estructurar las cinco paginas con elementos semanticos y
-accesibles. Sus elementos nativos permiten incorporar imagenes adaptables,
+Se utiliza para estructurar las paginas con elementos semanticos y
+accesibles. El sitio tiene nueve paginas en espanol (inicio, sobre mi, viajes,
+musica, formacion, contacto, ayuda, mapa del sitio y buscador), sus nueve
+equivalentes en ingles dentro de la carpeta en/ y una pagina 404 bilingue. Sus elementos nativos permiten incorporar imagenes adaptables,
 audio y video sin instalar complementos.
 
 CSS
 Se utiliza para definir la presentacion y adaptar la distribucion del
 contenido a pantallas de escritorio y moviles. Las hojas de estilo estan
 separadas por pagina y comparten reglas generales.
+
+JAVASCRIPT
+Se utiliza como mejora progresiva: sin JavaScript todo el contenido y la
+navegacion siguen funcionando. Aporta el buscador interno con sugerencias,
+el menu plegable en movil, avisos emergentes de confirmacion,
+el boton para volver arriba, la validacion en linea del formulario de contacto
+y el control de los audios (solo suena uno a la vez y se marca el activo).
+No se usan bibliotecas. El codigo esta dividido en un fichero por funcionalidad
+(js/sitio/) y js/main.js solo los arranca en orden:
+  nucleo.js      idioma de la pagina, textos de la interfaz y utilidades
+  avisos.js      aviso emergente accesible (elemento output)
+  menu.js        menu plegable en movil
+  navegacion.js  volver arriba, enlaces externos, barra de carga y atajos
+  indice.js      rastreo de las paginas para crear el indice del buscador
+  busqueda.js    logica de busqueda: puntuacion, sinonimos y erratas
+  buscador.js    interfaz del buscador: sugerencias y pagina de resultados
+  contacto.js    copiar el correo y formulario con validacion en linea
+  musica.js      solo suena un audio a la vez
+Son scripts clasicos que comparten el objeto window.Sitio (no modulos ES), asi
+que tambien funcionan si la web se abre como archivo, salvo el buscador.
+
+El buscador no usa un indice escrito a mano: cuando el usuario va a buscar,
+recorre el sitio empezando por la portada y el mapa del sitio, descarga cada
+fichero HTML con fetch(), lo analiza con DOMParser y sigue sus enlaces
+internos. De cada pagina indexa el texto de <main>, con una entrada por pagina
+y otra por cada seccion, articulo o titulo con id, para enlazar directamente
+con su ancla. Busca sin distinguir tildes ni mayusculas, resalta las
+coincidencias, muestra un fragmento del texto y sugiere correcciones si hay
+erratas. El indice se guarda en sessionStorage y se regenera cuando cambia la
+fecha de ultima actualizacion del pie. Necesita servirse desde un servidor web
+(GitHub Pages o uno local): abierto como archivo, el navegador bloquea fetch().
+
+VERSION 3: MEJORAS A PARTIR DE LAS PRUEBAS DE LA TANDA 2
+- Buscador destacado en la portada (grande, centrado, con ejemplo y
+  busquedas populares): ninguno de los usuarios uso el de la cabecera.
+- El menu dice «Formacion y experiencia»: dos usuarios no asociaron
+  «Formacion» con la experiencia laboral.
+- Sobre mi enlaza la experiencia laboral (proyectos.html#experiencia).
+- El buscador entiende sinonimos (trabajo, empresa, empleo, practicas...).
+
+PRUEBAS DE USABILIDAD
+Mouseflow registra los clics, toques y grabaciones de cada sesion.
+El seguimiento de ojos es codigo propio (js/ojos/ y js/ojos.js) que usa la
+biblioteca WebGazer.js (Universidad de Brown), la cual estima la mirada con la
+webcam. El codigo propio carga la biblioteca, calibra, guarda la mirada por
+pagina y dibuja el mapa de calor y el recorrido:
+  ojos/comun.js        configuracion, textos, almacenamiento y estilos
+  ojos/registro.js     registro de la mirada, carga de WebGazer y camara
+  ojos/calibracion.js  calibracion con nueve puntos
+  ojos/mapa.js         visor del mapa de calor y del recorrido
+  ojos.js              decide que hacer segun el parametro ?ojos
+Solo se activa a peticion del evaluador; los visitantes normales no descargan
+la biblioteca:
+  ?ojos=1    calibra (9 puntos, 5 pulsaciones cada uno) y empieza a registrar.
+             El registro continua al cambiar de pagina en la misma pestana.
+  ?ojos=ver  termina el registro y dibuja sobre la pagina el mapa de calor
+             o el recorrido de la mirada (fijaciones numeradas); permite
+             descargar todos los datos en JSON.
+  ?ojos=0    termina el registro sin mostrar nada.
+Los puntos se guardan en sessionStorage, en coordenadas de la pagina, y no
+se envian a ningun servidor.
 
 CARACTERISTICAS MODERNAS DE CSS
 -------------------------------
@@ -43,7 +106,9 @@ imagen/kyoto_poster.jpeg.
 HERRAMIENTAS Y DEPENDENCIAS
 ---------------------------
 
-El sitio no utiliza bibliotecas JavaScript ni frameworks. Se prefieren las
+El sitio no utiliza bibliotecas JavaScript ni frameworks; todo el
+JavaScript es propio. La unica excepcion es WebGazer.js, que solo se descarga
+durante las pruebas de seguimiento de ojos. Se prefieren las
 funciones nativas del navegador para reducir dependencias y facilitar el
 desarrollo.
 
@@ -55,10 +120,31 @@ conexion a Internet para cargarlas.
 CONTENIDO
 --------------------------------
 
-El sitio consta de cinco paginas: inicio, sobre mi, viajes, musica y formacion.
-Incluye datos personales, fotografia personal, fotografias de viajes, un video
-y varios audios de canciones.
+El sitio consta de las paginas de inicio, sobre mi, viajes, musica, formacion
+y contacto, mas las paginas de apoyo de ayuda, mapa del sitio y buscador.
+Incluye datos personales, fotografia personal, aficiones agrupadas,
+fotografias de viajes, un video, varios audios de canciones, formulario de
+contacto, enlace a GitHub y referencias bajo peticion.
+
+USABILIDAD Y AYUDA
+------------------
+
+- Migas de pan en todas las paginas interiores y mapa del sitio.
+- Pagina de ayuda con atajos de teclado, preguntas frecuentes e historial de
+  cambios.
+- Fecha de la ultima actualizacion en el pie de todas las paginas. Al publicar
+  cambios hay que actualizarla en las 19 paginas y en el historial de ayuda.
+- Version completa en ingles: el enlace EN/ES de la cabecera abre la misma
+  pagina en el otro idioma.
+
+VALIDACION
+----------
+
+Todas las paginas pasan el validador HTML del W3C sin errores ni avisos. Las
+hojas de estilo pasan el validador CSS del W3C salvo container-name,
+container-type y @container, que son CSS estandar que el validador todavia no
+reconoce.
 
 Los audios de musica.html son fragmentos breves (de unos 15 a 60 segundos) de
-cada cancion, comprimidos para reducir el peso del sitio. El titulo de cada uno
-lo indica con la palabra "fragmento".
+cada cancion, comprimidos para reducir el peso del sitio. Cada tarjeta lo
+indica con la palabra "Fragmento" seguida del nombre de la cancion.

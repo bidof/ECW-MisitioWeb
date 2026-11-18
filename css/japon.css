@@ -3,12 +3,7 @@
    ============================================= */
 main {
   max-width: 850px;
-  padding: clamp(4rem, 9vw, 6rem) 0;
-}
-
-body > header > nav > a:nth-child(3) {
-  color: var(--color-acento);
-  background-color: var(--color-fondo);
+  padding: clamp(1.5rem, 4vw, 2.5rem) 0 clamp(4rem, 9vw, 6rem);
 }
 
 main > header + figure + section {
@@ -95,4 +90,22 @@ main > header + figure + section + section {
   main > header + figure + section + section {
     grid-template-columns: 1fr;
   }
+}
+
+/* Esquinas redondeadas y sombra suave para fotografias y video. */
+main img,
+main video {
+  border-radius: var(--radio);
+}
+
+main > figure img {
+  box-shadow: var(--sombra);
+}
+
+main > header + figure + section + section figure {
+  transition: transform var(--transicion);
+}
+
+main > header + figure + section + section figure:hover {
+  transform: translateY(-4px);
 }
