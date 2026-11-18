@@ -101,6 +101,11 @@
     copia.querySelectorAll('script, style, noscript, svg, nav, form, audio, video, .oculto').forEach(function (n) {
       n.remove();
     });
+    /* Se anade un espacio al final de cada bloque para que el texto de dos
+       elementos seguidos no se junte («audio» + «Fragmento» → «audioFragmento»). */
+    copia.querySelectorAll('p, li, dt, dd, td, th, summary, h1, h2, h3, h4, h5, h6, figcaption').forEach(function (n) {
+      n.appendChild(document.createTextNode(' '));
+    });
     return limpiarEspacios(copia.textContent);
   }
 
